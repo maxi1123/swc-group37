@@ -19,13 +19,13 @@ due to the messy nature of imports and the resulting arrows.
 Task 1.2
 
 ** Refer to swc-group37\SoftCon2020_Assignment_1\Call Graph.png **
------------
-Task 2
-
-** Refer to swc-group37\SoftCon2020_Assignment_1\Data Flow #1-#6.png **
 
 !! Please note that calls to external library (java.util, java.io etc.) functions are not included due to simplicity !!
 
 We decided to not follow the calls branching off at getJson(tokens) in the com.kotcrab.vis.usl.Parser package, as the graph
 would become very messy and extremely in-depth.
+-----------
+Task 2
+
+** Refer to swc-group37\SoftCon2020_Assignment_1\Data Flow #1-#6.png **
 -----------
