@@ -62,13 +62,14 @@ public class Main {
                     if (Grid.grid[i][Field1.charAt(0) - 'A'] != "[]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
-                    } else {
+                    }
+                    else {
                             Insert(ship,Field1,Field2,ocean);
                     }
                 }
             }
         } else if ((Field1.charAt(1) == Field2.charAt(1)) && (Field1.charAt(1) <= '9') && (Field2.charAt(1) <= '9')) {
-            if (Field2.charAt(0) - Field1.charAt(0) == ship.getSize()) {
+            if (Field2.charAt(0) - Field1.charAt(0) + 1 == ship.getSize()) {
                 for (int i = 0; i > ship.getSize(); i++) {
                     if (Grid.grid[Field1.charAt(1)][i+Field1.charAt(0)-'A'] != "[]") {
                         System.out.println("The specified input is invalid");
