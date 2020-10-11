@@ -45,36 +45,12 @@ public class Main {
         shipObjects[9] = patrolboat4;
 
         for(int i=0; i<10; i++){
-            return;
+            InputValidate(shipObjects[i], newgrid);
         }
-
-//        // Populate shipObjects with all the available ships
-//        Ship[] shipObjects = new Ship[10];
-//
-//        int i;
-
-//        for(i=0; i<10; i++){
-//            if(i>5){
-//                PatrolBoat patrolboat = new PatrolBoat();
-//                shipObjects[i] = patrolboat;
-//            }
-//            else if(i>2){
-//                Submarine submarine = new Submarine();
-//                shipObjects[i] = submarine;
-//            }
-//            else if(i>0){
-//                Battleship battleship = new Battleship();
-//                shipObjects[i] = battleship;
-//            }
-//            else{
-//                Carrier carrier = new Carrier();
-//                shipObjects[i] = carrier;
-//            }
-//        }
     }
 
 
-    public boolean InputValidate(Ship ship, String[][] ocean) {
+    public static boolean InputValidate(Ship ship, Grid ocean) {
         Scanner input = new Scanner(System.in);
         System.out.print("Please enter the position of your " + ship.getSize() + ":");
         String Field1 = input.next();
@@ -83,7 +59,7 @@ public class Main {
         if ((Field1.charAt(0) == Field2.charAt(0)) && (Field1.charAt(0) <= 'L') && (Field2.charAt(0) <= 'L')) {
             if (Field2.charAt(1) - Field1.charAt(1) == ship.getSize()) {
                 for (int i = 0; i > ship.getSize(); i++) {
-                    if (ocean[Field1.charAt(0) - 'A'][i] != "") {
+                    if (Grid.grid[Field1.charAt(0) - 'A'][i] != "[]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
                     } else {
@@ -94,7 +70,7 @@ public class Main {
         } else if ((Field1.charAt(1) == Field2.charAt(1)) && (Field1.charAt(1) <= '9') && (Field2.charAt(1) <= '9')) {
             if (Field2.charAt(0) - Field1.charAt(0) == ship.getSize()) {
                 for (int i = 0; i > ship.getSize(); i++) {
-                    if (ocean[i][Field1.charAt(0) - 'A'] != "") {
+                    if (Grid.grid[i][Field1.charAt(0) - 'A'] != "[]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
                     } else {

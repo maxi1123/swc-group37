@@ -13,7 +13,4 @@ public class Grid {
             }
         }
     }
-    public void placeShip(Ship ship, char start, char end){
-
-    }
 }
