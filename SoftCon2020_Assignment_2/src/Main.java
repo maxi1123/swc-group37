@@ -56,7 +56,7 @@ public class Main {
         String Field1 = input.next();
         String Field2 = input.next();
         //working with ASCII values to find if gap between fields is valid for the ship length
-        if ((Field1.charAt(0) == Field2.charAt(0)) && (Field1.charAt(0) <= 'L') && (Field2.charAt(0) <= 'L')) {
+        if ((Field1.charAt(0) == Field2.charAt(0)) && (Field1.charAt(0) <= 'J') && (Field2.charAt(0) <= 'J')) {
             if (Field2.charAt(1) - Field1.charAt(1) == ship.getSize()) {
                 for (int i = 0; i > ship.getSize(); i++) {
                     if (Grid.grid[i][Field1.charAt(0) - 'A'] != "[]") {
