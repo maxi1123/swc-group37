@@ -52,7 +52,7 @@ public class Main {
 
     public static boolean InputValidate(Ship ship, Grid ocean) {
         Scanner input = new Scanner(System.in);
-        System.out.print("Please enter the position of your " + ship.getSize() + ":");
+        System.out.print("Please enter the position of your " + ship.getName() + ":");
         String Field1 = input.next();
         String Field2 = input.next();
         //working with ASCII values to find if gap between fields is valid for the ship length
