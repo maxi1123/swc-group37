@@ -4,7 +4,7 @@ public class PatrolBoat implements Ship {
 
     private final int size = 2;
     private final char type = 'P';
-    private final String fullname = "PatrolBoat";
+    static String fullname;
     private final int allowed = 4;
 
     @Override
@@ -17,4 +17,8 @@ public class PatrolBoat implements Ship {
     }
     @Override
     public String getName(){ return fullname; }
+
+    public void setName(String name){
+        this.fullname = name;
+    }
 }

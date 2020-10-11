@@ -3,7 +3,7 @@ package boats;
 public class Submarine implements Ship{
     private final int size = 3;
     private final char type = 'S';
-    private final String fullname = "Submarine";
+    static String fullname;
     private final int allowed = 3;
 
     @Override
@@ -16,4 +16,8 @@ public class Submarine implements Ship{
     }
     @Override
     public String getName(){ return fullname; }
+
+    public void setName(String name){
+        this.fullname = name;
+    }
 }

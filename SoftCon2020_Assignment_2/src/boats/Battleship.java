@@ -4,7 +4,7 @@ public class Battleship implements Ship{
 
     private final int size = 4;
     private final char type = 'B';
-    private final String fullname = "Battleship";
+    static String fullname;
     private final int allowed = 2;
 
     @Override
@@ -17,4 +17,8 @@ public class Battleship implements Ship{
     }
     @Override
     public String getName(){ return fullname; }
+
+    public void setName(String name){
+        this.fullname = name;
+    }
 }
