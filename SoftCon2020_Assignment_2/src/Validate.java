@@ -17,7 +17,7 @@ public class Validate {
                 return false;
             }
         }
-        else if (Field1.charAt(1)==Field2.charAt(2)){
+        else if (Field1.charAt(1)==Field2.charAt(1)){
             if (Field1.charAt(0)-Field2.charAt(0)==ship.length){
                 return true;
             }
