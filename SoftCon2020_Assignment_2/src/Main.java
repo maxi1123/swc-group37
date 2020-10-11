@@ -63,7 +63,7 @@ public class Main {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
                     } else {
-
+                            Insert(ship,Field1,Field2,ocean);
                     }
                 }
             }
@@ -74,7 +74,7 @@ public class Main {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
                     } else {
-
+                            Insert(ship,Field1,Field2,ocean);
                     }
                 }
             } else {
@@ -84,6 +84,19 @@ public class Main {
         }
         //I hope this works
         return false;
+    }
+    public static void Insert(Ship ship, String start,String end, Grid grid){
+        if(start.charAt(0)==end.charAt(0)){
+            for(int i = 0;i < ship.getSize(); i++){
+                Grid.grid[start.charAt(1)+i][start.charAt(0)-'A'] = "["+ ship.getType() +"]";
+            }
+        }
+        else{
+            for(int i = 0;i < ship.getSize(); i++){
+                Grid.grid[start.charAt(1)][start.charAt(0)-'A'+i] = "["+ ship.getType() +"]";
+
+            }
+        }
     }
 }
 
