@@ -47,6 +47,7 @@ public class Main {
         for(int i=0; i<10; i++){
             InputValidate(shipObjects[i], newgrid);
         }
+        newgrid.printGrid();
     }
 
 
@@ -58,27 +59,29 @@ public class Main {
         //working with ASCII values to find if gap between fields is valid for the ship length
         if ((Field1.charAt(0) == Field2.charAt(0)) && (Field1.charAt(0) <= 'J') && (Field2.charAt(0) <= 'J')) {
             if (Field2.charAt(1) - Field1.charAt(1) == ship.getSize()) {
-                for (int i = 0; i > ship.getSize(); i++) {
-                    if (Grid.grid[i][Field1.charAt(0) - 'A'] != "[]") {
+                for (int i = 0; i <= ship.getSize(); i++) {
+                    if (Grid.grid[i+Field1.charAt(0)-'0'][Field1.charAt(0) - 'A'] != "[]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
                     }
-                    else {
-                            Insert(ship,Field1,Field2,ocean);
+
                     }
+                Insert(ship,Field1,Field2,ocean);
+                return true;
                 }
             }
-        } else if ((Field1.charAt(1) == Field2.charAt(1)) && (Field1.charAt(1) <= '9') && (Field2.charAt(1) <= '9')) {
+         else if ((Field1.charAt(1) == Field2.charAt(1)) && (Field1.charAt(1) <= '9') && (Field2.charAt(1) <= '9')) {
             if (Field2.charAt(0) - Field1.charAt(0) + 1 == ship.getSize()) {
-                for (int i = 0; i > ship.getSize(); i++) {
-                    if (Grid.grid[Field1.charAt(1)][i+Field1.charAt(0)-'A'] != "[]") {
+                for (int i = 0; i <= ship.getSize(); i++) {
+                    if (Grid.grid[Field1.charAt(1)-'0'][i+Field1.charAt(0)-'A'] != "[]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
-                    } else {
-                            Insert(ship,Field1,Field2,ocean);
                     }
                 }
-            } else {
+                Insert(ship,Field1,Field2,ocean);
+                return true;
+            }
+            else {
                 System.out.println("The specified input is invalid");
                 InputValidate(ship, ocean);
             }
@@ -89,12 +92,12 @@ public class Main {
     public static void Insert(Ship ship, String start,String end, Grid grid){
         if(start.charAt(0)==end.charAt(0)){
             for(int i = 0;i < ship.getSize(); i++){
-                grid.grid[start.charAt(1)+i][start.charAt(0)-'A'] = "["+ ship.getType() +"]";
+                grid.grid[start.charAt(1)+i-'0'][start.charAt(0)-'A'] = "["+ ship.getType() +"]";
             }
         }
         else{
             for(int i = 0;i < ship.getSize(); i++){
-                grid.grid[start.charAt(1)][start.charAt(0)-'A'+i] = "["+ ship.getType() +"]";
+                grid.grid[start.charAt(1)-'0'][start.charAt(0)-'A'+i] = "["+ ship.getType() +"]";
 
             }
         }
