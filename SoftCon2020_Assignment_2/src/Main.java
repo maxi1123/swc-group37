@@ -16,7 +16,7 @@ public class Main {
         Battleship battleship1 = new Battleship();
         battleship1.setName("Battleship 1");
         Battleship battleship2 = new Battleship();
-        battleship2.setName("Battleship 2:");
+        battleship2.setName("Battleship 2");
         Submarine submarine1 = new Submarine();
         submarine1.setName("Submarine 1");
         Submarine submarine2 = new Submarine();
