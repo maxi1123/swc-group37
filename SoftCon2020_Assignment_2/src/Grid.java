@@ -33,7 +33,7 @@ public class Grid {
 
             for(int column = 0; column < columns; column++){
                 if (column==0){System.out.print("["+row+"]|");}
-                System.out.print("[" + grid[column][row] + "]");
+                System.out.print("[" + grid[row][column] + "]");
             }
         }
     }
