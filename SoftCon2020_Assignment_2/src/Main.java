@@ -86,6 +86,8 @@ public class Main {
                 InputValidate(ship, ocean);
             }
         }
+        System.out.println("The specified input is invalid");
+        InputValidate(ship, ocean);
         //I hope this works
         return false;
     }
