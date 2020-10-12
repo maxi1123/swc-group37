@@ -9,7 +9,7 @@ public class Grid {
     public void buildGrid(){
         for(int column=0; column<columns; column++){
             for(int row=0; row<rows; row++){
-                grid[column][row] = "[]";
+                grid[column][row] = "[ ]";
             }
         }
     }
@@ -33,7 +33,7 @@ public class Grid {
 
             for(int column = 0; column < columns; column++){
                 if (column==0){System.out.print("["+row+"]|");}
-                System.out.print("[" + grid[row][column] + "]");
+                System.out.print(grid[row][column]);
             }
         }
     }
