@@ -3,7 +3,7 @@ import boats.Ship;
 import java.util.Scanner;
 
 public class Validator {
-    public static boolean InputValidate(Ship ship, Grid ocean) {
+    public boolean InputValidate(Ship ship, Grid ocean) {
         Scanner input = new Scanner(System.in);
         System.out.print("Please enter the position of your " + ship.getName() + ":");
         String Field1 = input.next();
