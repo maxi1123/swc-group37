@@ -25,7 +25,7 @@ public interface Ship {
     /**
      * A simple getter method.
      * @return char type of the ship object.
-     * type stands for the shortname of a ship object, which is used for grid placement.
+     * type stands for the shortname of a ship object, which is used for representation on the printed grid.
      */
 
     char getType();
