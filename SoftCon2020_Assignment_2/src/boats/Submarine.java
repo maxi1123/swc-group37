@@ -1,9 +1,10 @@
 package boats;
 
 public class Submarine implements Ship{
+
     private final int size = 3;
     private final char type = 'S';
-    static String fullname;
+    private String fullname;
     private final int allowed = 3;
 
     @Override
