@@ -63,6 +63,7 @@ public class Main {
                     if (Grid.grid[i+Field1.charAt(1)-'0'][Field1.charAt(0) - 'A'] != "[ ]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
+                        return false;
                     }
 
                     }
@@ -76,6 +77,7 @@ public class Main {
                     if (Grid.grid[Field1.charAt(1)-'0'][i+Field1.charAt(0)-'A'] != "[ ]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
+                        return false;
                     }
                 }
                 Insert(ship,Field1,Field2,ocean);
