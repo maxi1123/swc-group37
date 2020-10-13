@@ -1,12 +1,10 @@
 import boats.*;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args){
         System.out.println("Welcome to Battleship!!");
-        Grid newgrid = new Grid();
-        newgrid.buildGrid();
+        Grid ocean = new Grid();
+        ocean.buildGrid();
         Validator validator = new Validator();
 
         // Hardcoding looks awful but does the job...
@@ -46,9 +44,9 @@ public class Main {
         shipObjects[9] = patrolboat4;
 
         for(int i=0; i<10; i++){
-            validator.InputValidate(shipObjects[i], newgrid);
+            validator.InputValidate(shipObjects[i], ocean);
         }
-        newgrid.printGrid();
+        ocean.printGrid();
     }
 
 
