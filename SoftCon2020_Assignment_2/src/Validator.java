@@ -40,6 +40,7 @@ public class Validator {
             else {
                 System.out.println("The specified input is invalid");
                 InputValidate(ship, ocean);
+                return false;
             }
         }
         System.out.println("The specified input is invalid");
