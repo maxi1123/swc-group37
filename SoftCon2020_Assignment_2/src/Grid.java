@@ -6,6 +6,8 @@ public class Grid implements Gridable{
 
     String[][] grid = new String[columns][rows];
 
+    // Method responsible for building a near-empty grid. All the fields in a 10x10 grid are set to [ ].
+
     @Override
     public void buildGrid(){
         for(int column=0; column<columns; column++){
@@ -14,6 +16,8 @@ public class Grid implements Gridable{
             }
         }
     }
+
+    // Method responsible for printing the final grid. Gets called once in Main.java.
 
     @Override
     public void printGrid(){
@@ -40,6 +44,8 @@ public class Grid implements Gridable{
             }
         }
     }
+
+    // Method responsible for inserting a ship in a given position. Implemented in Validator.InputValidate.
 
     @Override
     public void Insert(Ship ship, String start,String end){

@@ -10,7 +10,7 @@ public class Main {
 
         ArrayList<Ship> shipList = new ArrayList<>();
 
-        //Populate ArrayList<Ship> shiplist with all available ships
+        // Loop for populating ArrayList<Ship> shipList with all available ships.
 
         int count = 1;
 
