@@ -1,10 +1,10 @@
 import boats.*;
 
 public class Grid {
-    private static final int columns = 10;
-    private static final int rows = 10;
+    private final int columns = 10;
+    private final int rows = 10;
 
-    static String[][] grid = new String[columns][rows];
+    String[][] grid = new String[columns][rows];
 
     public void buildGrid(){
         for(int column=0; column<columns; column++){
@@ -34,6 +34,19 @@ public class Grid {
             for(int column = 0; column < columns; column++){
                 if (column==0){System.out.print("["+row+"]|");}
                 System.out.print(grid[row][column]);
+            }
+        }
+    }
+    public void Insert(Ship ship, String start,String end, Grid grid){
+        if(start.charAt(0)==end.charAt(0)){
+            for(int i = 0;i < ship.getSize(); i++){
+                grid.grid[start.charAt(1)+i-'0'][start.charAt(0)-'A'] = "["+ ship.getType() +"]";
+            }
+        }
+        else{
+            for(int i = 0;i < ship.getSize(); i++){
+                grid.grid[start.charAt(1)-'0'][start.charAt(0)-'A'+i] = "["+ ship.getType() +"]";
+
             }
         }
     }
