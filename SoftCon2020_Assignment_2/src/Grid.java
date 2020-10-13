@@ -1,10 +1,10 @@
 import boats.*;
 
 public class Grid {
-    private static final int columns = 10;
-    private static final int rows = 10;
+    private final int columns = 10;
+    private final int rows = 10;
 
-    static String[][] grid = new String[columns][rows];
+    String[][] grid = new String[columns][rows];
 
     public void buildGrid(){
         for(int column=0; column<columns; column++){

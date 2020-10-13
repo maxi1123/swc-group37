@@ -60,7 +60,7 @@ public class Main {
         if ((Field1.charAt(0) == Field2.charAt(0)) && (Field1.charAt(0) <= 'J') && (Field2.charAt(0) <= 'J')) {
             if (Field2.charAt(1) - Field1.charAt(1) + 1 == ship.getSize()) {
                 for (int i = 0; i < ship.getSize(); i++) {
-                    if (Grid.grid[i+Field1.charAt(1)-'0'][Field1.charAt(0) - 'A'] != "[ ]") {
+                    if (ocean.grid[i+Field1.charAt(1)-'0'][Field1.charAt(0) - 'A'] != "[ ]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
                     }
@@ -73,7 +73,7 @@ public class Main {
          else if ((Field1.charAt(1) == Field2.charAt(1)) && (Field1.charAt(1) <= '9') && (Field2.charAt(1) <= '9')) {
             if (Field2.charAt(0) - Field1.charAt(0) + 1 == ship.getSize()) {
                 for (int i = 0; i < ship.getSize(); i++) {
-                    if (Grid.grid[Field1.charAt(1)-'0'][i+Field1.charAt(0)-'A'] != "[ ]") {
+                    if (ocean.grid[Field1.charAt(1)-'0'][i+Field1.charAt(0)-'A'] != "[ ]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
                     }
