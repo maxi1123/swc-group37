@@ -21,7 +21,7 @@ public class Validator {
                     }
 
                 }
-                ocean.Insert(ship,Field1,Field2,ocean);
+                ocean.Insert(ship,Field1,Field2);
                 return true;
             }
         }
@@ -34,7 +34,7 @@ public class Validator {
                         return false;
                     }
                 }
-                ocean.Insert(ship,Field1,Field2,ocean);
+                ocean.Insert(ship,Field1,Field2);
                 return true;
             }
             else {
