@@ -4,7 +4,7 @@ public class Battleship implements Ship{
 
     private final int size = 4;
     private final char type = 'B';
-    static String fullname;
+    private String fullname;
     private final int allowed = 2;
 
     @Override
