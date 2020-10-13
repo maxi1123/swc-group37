@@ -66,7 +66,7 @@ public class Main {
                     }
 
                     }
-                Insert(ship,Field1,Field2,ocean);
+                ocean.Insert(ship,Field1,Field2,ocean);
                 return true;
                 }
             }
@@ -78,7 +78,7 @@ public class Main {
                         InputValidate(ship, ocean);
                     }
                 }
-                Insert(ship,Field1,Field2,ocean);
+                ocean.Insert(ship,Field1,Field2,ocean);
                 return true;
             }
             else {
@@ -90,19 +90,6 @@ public class Main {
         InputValidate(ship, ocean);
         //I hope this works
         return false;
-    }
-    public static void Insert(Ship ship, String start,String end, Grid grid){
-        if(start.charAt(0)==end.charAt(0)){
-            for(int i = 0;i < ship.getSize(); i++){
-                grid.grid[start.charAt(1)+i-'0'][start.charAt(0)-'A'] = "["+ ship.getType() +"]";
-            }
-        }
-        else{
-            for(int i = 0;i < ship.getSize(); i++){
-                grid.grid[start.charAt(1)-'0'][start.charAt(0)-'A'+i] = "["+ ship.getType() +"]";
-
-            }
-        }
     }
 }
 
