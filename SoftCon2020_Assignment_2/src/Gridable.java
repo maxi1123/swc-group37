@@ -23,7 +23,9 @@ public interface Gridable {
 
     /**
      * Method enabling ship object placement on a grid object.
-     * @param ship, start, end for placing a ship object.
+     * @param ship Ship object to place
+     * @param start String start represents first coordinate
+     * @param end String end represents end coordinate
      * @return void
      */
 
