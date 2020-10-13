@@ -3,7 +3,9 @@ import boats.Ship;
 import java.util.Scanner;
 
 public class Validator {
-    public boolean InputValidate(Ship ship, Grid ocean) {
+
+
+    public static boolean InputValidate(Ship ship, Grid ocean) {
         Scanner input = new Scanner(System.in);
         System.out.print("Please enter the position of your " + ship.getName() + ":");
         String Field1 = input.next();
@@ -15,6 +17,7 @@ public class Validator {
                     if (ocean.grid[i+Field1.charAt(1)-'0'][Field1.charAt(0) - 'A'] != "[ ]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
+                        return false;
                     }
 
                 }
@@ -28,6 +31,7 @@ public class Validator {
                     if (ocean.grid[Field1.charAt(1)-'0'][i+Field1.charAt(0)-'A'] != "[ ]") {
                         System.out.println("The specified input is invalid");
                         InputValidate(ship, ocean);
+                        return false;
                     }
                 }
                 ocean.Insert(ship,Field1,Field2,ocean);
