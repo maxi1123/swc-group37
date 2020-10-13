@@ -1,11 +1,12 @@
 import boats.*;
 
-public class Grid {
+public class Grid implements Gridable{
     private final int columns = 10;
     private final int rows = 10;
 
     String[][] grid = new String[columns][rows];
 
+    @Override
     public void buildGrid(){
         for(int column=0; column<columns; column++){
             for(int row=0; row<rows; row++){
@@ -14,6 +15,7 @@ public class Grid {
         }
     }
 
+    @Override
     public void printGrid(){
         for(int row = 0; row < rows; row++){
             System.out.print("\n");
@@ -38,6 +40,8 @@ public class Grid {
             }
         }
     }
+
+    @Override
     public void Insert(Ship ship, String start,String end){
         if(start.charAt(0)==end.charAt(0)){
             for(int i = 0;i < ship.getSize(); i++){

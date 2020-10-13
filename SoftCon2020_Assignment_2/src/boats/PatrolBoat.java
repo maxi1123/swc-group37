@@ -18,7 +18,5 @@ public class PatrolBoat implements Ship {
     @Override
     public String getName(){ return fullname; }
 
-    public void setName(String name){
-        this.fullname = name;
-    }
+    public void setName(String name){ fullname = name; }
 }
