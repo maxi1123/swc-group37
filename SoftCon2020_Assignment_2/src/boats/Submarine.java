@@ -5,7 +5,10 @@ public class Submarine implements Ship{
     private final int size = 3;
     private final char type = 'S';
     private String fullname;
-    private final int allowed = 3;
+
+    public Submarine(String shipname){
+        this.fullname = shipname;
+    }
 
     @Override
     public int getSize(){

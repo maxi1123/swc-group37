@@ -1,4 +1,5 @@
 import boats.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
@@ -7,44 +8,77 @@ public class Main {
         ocean.buildGrid();
         Validator validator = new Validator();
 
-        // Hardcoding looks awful but does the job...
+        ArrayList<Ship> shipList = new ArrayList<>();
 
-        Ship[] shipObjects = new Ship[10];
+        //Populate ArrayList<Ship> shiplist with all available ships
 
-        Carrier carrier = new Carrier();
-        Battleship battleship1 = new Battleship();
-        battleship1.setName("Battleship 1");
-        Battleship battleship2 = new Battleship();
-        battleship2.setName("Battleship 2");
-        Submarine submarine1 = new Submarine();
-        submarine1.setName("Submarine 1");
-        Submarine submarine2 = new Submarine();
-        submarine2.setName("Submarine 2");
-        Submarine submarine3 = new Submarine();
-        submarine3.setName("Submarine 3");
-        PatrolBoat patrolboat1 = new PatrolBoat();
-        patrolboat1.setName("Patrol boat 1");
-        PatrolBoat patrolboat2 = new PatrolBoat();
-        patrolboat2.setName("Patrol boat 2");
-        PatrolBoat patrolboat3 = new PatrolBoat();
-        patrolboat3.setName("Patrol boat 3");
-        PatrolBoat patrolboat4 = new PatrolBoat();
-        patrolboat4.setName("Patrol boat 4");
+        int count = 1;
+
+        for (int j=0; j<10; j++){
+
+            if(j==0){
+                Carrier carrier = new Carrier();
+                shipList.add(carrier);
+                continue;
+            }
+            else if(j>0 && j<3){
+                shipList.add(new Battleship("Battleship " + count));
+                count++;
+            }
+            else if(j>2 && j<6){
+                if(j==3){
+                    count = 1;
+                }
+                shipList.add(new Submarine("Submarine " + count));
+                count++;
+            }
+            else{
+                if(j==6){
+                    count = 1;
+                }
+                shipList.add(new PatrolBoat("Patrol boat " + count));
+                count++;
+            }
+        }
+
+        // HARDCODING IS BAD
+
+//        Ship[] shipObjects = new Ship[10];
+//
+//        Carrier carrier = new Carrier();
+//        Battleship battleship1 = new Battleship();
+//        battleship1.setName("Battleship 1");
+//        Battleship battleship2 = new Battleship();
+//        battleship2.setName("Battleship 2");
+//        Submarine submarine1 = new Submarine();
+//        submarine1.setName("Submarine 1");
+//        Submarine submarine2 = new Submarine();
+//        submarine2.setName("Submarine 2");
+//        Submarine submarine3 = new Submarine();
+//        submarine3.setName("Submarine 3");
+//        PatrolBoat patrolboat1 = new PatrolBoat();
+//        patrolboat1.setName("Patrol boat 1");
+//        PatrolBoat patrolboat2 = new PatrolBoat();
+//        patrolboat2.setName("Patrol boat 2");
+//        PatrolBoat patrolboat3 = new PatrolBoat();
+//        patrolboat3.setName("Patrol boat 3");
+//        PatrolBoat patrolboat4 = new PatrolBoat();
+//        patrolboat4.setName("Patrol boat 4");
 
 
-        shipObjects[0] = carrier;
-        shipObjects[1] = battleship1;
-        shipObjects[2] = battleship2;
-        shipObjects[3] = submarine1;
-        shipObjects[4] = submarine2;
-        shipObjects[5] = submarine3;
-        shipObjects[6] = patrolboat1;
-        shipObjects[7] = patrolboat2;
-        shipObjects[8] = patrolboat3;
-        shipObjects[9] = patrolboat4;
+//        shipObjects[0] = carrier;
+//        shipObjects[1] = battleship1;
+//        shipObjects[2] = battleship2;
+//        shipObjects[3] = submarine1;
+//        shipObjects[4] = submarine2;
+//        shipObjects[5] = submarine3;
+//        shipObjects[6] = patrolboat1;
+//        shipObjects[7] = patrolboat2;
+//        shipObjects[8] = patrolboat3;
+//        shipObjects[9] = patrolboat4;
 
         for(int i=0; i<10; i++){
-            validator.InputValidate(shipObjects[i], ocean);
+            validator.InputValidate(shipList.get(i), ocean);
         }
         ocean.printGrid();
     }

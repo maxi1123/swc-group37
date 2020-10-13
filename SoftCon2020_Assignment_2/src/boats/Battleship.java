@@ -5,7 +5,10 @@ public class Battleship implements Ship{
     private final int size = 4;
     private final char type = 'B';
     private String fullname;
-    private final int allowed = 2;
+
+    public Battleship(String shipname){
+        this.fullname = shipname;
+    }
 
     @Override
     public int getSize(){
