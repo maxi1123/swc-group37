@@ -7,7 +7,7 @@ public class Submarine implements Ship{
     private String fullname;
 
     public Submarine(String shipname){
-        this.fullname = shipname;
+        fullname = shipname;
     }
 
     @Override
@@ -15,11 +15,7 @@ public class Submarine implements Ship{
         return size;
     }
     @Override
-    public char getType(){
-        return type;
-    }
+    public char getType(){return type;}
     @Override
     public String getName(){ return fullname; }
-
-    public void setName(String name){ fullname = name; }
 }

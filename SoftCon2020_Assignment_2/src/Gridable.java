@@ -9,14 +9,12 @@ public interface Gridable {
 
     /**
      * Method relying on a single call for building an empty grid.
-     * @return void
      */
 
     void buildGrid();
 
     /**
      * Method relying on a single call for printing a populated grid.
-     * @return void
      */
 
     void printGrid();
@@ -26,7 +24,6 @@ public interface Gridable {
      * @param ship Ship object to place
      * @param start String start represents first coordinate
      * @param end String end represents end coordinate
-     * @return void
      */
 
     void Insert(Ship ship, String start, String end);

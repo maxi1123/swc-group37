@@ -7,7 +7,7 @@ public class Battleship implements Ship{
     private String fullname;
 
     public Battleship(String shipname){
-        this.fullname = shipname;
+        fullname = shipname;
     }
 
     @Override
@@ -20,6 +20,4 @@ public class Battleship implements Ship{
     }
     @Override
     public String getName(){ return fullname; }
-
-    public void setName(String name){ fullname = name; }
 }
