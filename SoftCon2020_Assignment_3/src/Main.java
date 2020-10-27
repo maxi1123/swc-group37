@@ -4,8 +4,10 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args){
         System.out.println("Welcome to Battleship!!");
-        Grid ocean = new Grid();
-        ocean.buildGrid();
+        Grid player_grid = new Grid();
+        player_grid.buildGrid();
+        Grid ai_grid = new Grid();
+        ai_grid.buildGrid();
 
         ArrayList<Ship> shipList = new ArrayList<>();
 
@@ -40,9 +42,18 @@ public class Main {
             }
         }
         for(int i=0; i<10; i++){
-            Validator.InputValidate(shipList.get(i), ocean);
+            Validator.InputValidate(shipList.get(i), player_grid);
         }
-        ocean.printGrid();
+        Playflow.playRound();
+//        System.out.print("\n");
+//        System.out.print("Your board is: ");
+//        System.out.print("\n");
+//        player_grid.printGrid();
+//        System.out.print("\n");
+//        System.out.print("\n");
+//        System.out.print("Your opponent's board is: ");
+//        System.out.print("\n");
+//        ai_grid.printGrid();
     }
 
 
