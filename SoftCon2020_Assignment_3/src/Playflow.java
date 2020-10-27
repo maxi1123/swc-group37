@@ -61,8 +61,8 @@ public class Playflow {
     }
 
     public static void playRound() {
-        Enemy enemy = new Enemy();
-        Player player = new Player();
+        Enemy enemy = Enemy.getInstance();
+        Player player = Player.getInstance();
         if (enemy.getRemaining() == 0) {
             System.out.println("You won");
         }
