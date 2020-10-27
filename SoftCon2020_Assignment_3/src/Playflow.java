@@ -1,6 +1,7 @@
 import boats.*;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Playflow {
 
@@ -59,7 +60,25 @@ public class Playflow {
         }
     }
 
-    public static void playRound(){
-
+    public static void playRound() {
+        Enemy enemy = new Enemy();
+        Player player = new Player();
+        if (enemy.getRemaining() == 0) {
+            System.out.println("You won");
+        }
+        if (player.getRemaining() == 0) {
+            System.out.println("You lost");
+        } else {
+            Scanner input = new Scanner(System.in);
+            System.out.print("Please enter the position of your attacking coordinates");
+            String position = input.next();
+            if (ValidateCoordinates(position) == false) {
+                System.out.println("Your Coordinates are invalid");
+                playRound();
+            }
+            else {
+                if ()
+            }
+        }
     }
 }
