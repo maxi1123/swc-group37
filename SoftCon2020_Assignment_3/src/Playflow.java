@@ -10,11 +10,12 @@ public class Playflow {
         Grid player_grid = new Grid();
         player_grid.buildGrid();
         Grid ai_grid_hidden = new Grid();
-        ai_grid_hidden.buildAIgrid();
+        ai_grid_hidden.buildGrid();
+        ai_grid_hidden.placeAI();
         Grid ai_grid_public= new Grid();
         ai_grid_public.buildGrid();
 
-        ArrayList<Ship> shipList = new ArrayList<>();
+        ArrayList<Ship> playerList = new ArrayList<>();
 
         // Loop for populating ArrayList<Ship> shipList with all available ships.
 
@@ -24,30 +25,30 @@ public class Playflow {
 
             if(j==0){
                 Carrier carrier = new Carrier();
-                shipList.add(carrier);
+                playerList.add(carrier);
                 continue;
             }
             else if(j>0 && j<3){
-                shipList.add(new Battleship("Battleship " + count));
+                playerList.add(new Battleship("Battleship " + count));
                 count++;
             }
             else if(j>2 && j<6){
                 if(j==3){
                     count = 1;
                 }
-                shipList.add(new Submarine("Submarine " + count));
+                playerList.add(new Submarine("Submarine " + count));
                 count++;
             }
             else{
                 if(j==6){
                     count = 1;
                 }
-                shipList.add(new PatrolBoat("Patrol boat " + count));
+                playerList.add(new PatrolBoat("Patrol boat " + count));
                 count++;
             }
         }
         for(int i=0; i<10; i++){
-            Validator.InputValidate(shipList.get(i), player_grid);
+            Validator.InputValidate(playerList.get(i), player_grid);
         }
     }
 

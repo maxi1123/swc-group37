@@ -1,5 +1,8 @@
 import boats.*;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Grid implements Gridable{
     private final int columns = 10;
     private final int rows = 10;
@@ -13,6 +16,57 @@ public class Grid implements Gridable{
         for(int column=0; column<columns; column++){
             for(int row=0; row<rows; row++){
                 grid[column][row] = "[ ]";
+            }
+        }
+    }
+
+    public void placeAI(){
+
+        ArrayList<Ship> AIList = new ArrayList<>();
+
+        // Loop for populating ArrayList<Ship> shipList with all available ships.
+
+        int count = 1;
+
+        for (int j=0; j<10; j++){
+
+            if(j==0){
+                Carrier AICarrier = new Carrier();
+                AIList.add(AICarrier);
+                continue;
+            }
+            else if(j>0 && j<3){
+                Battleship AIBattleship = new Battleship("Battleship " + count);
+                AIList.add(AIBattleship);
+                count++;
+            }
+            else if(j>2 && j<6){
+                if(j==3){
+                    count = 1;
+                }
+                Submarine AISubmarine = new Submarine("Submarine " + count);
+                AIList.add(AISubmarine);
+                count++;
+            }
+            else{
+                if(j==6){
+                    count = 1;
+                }
+                PatrolBoat AIPatrolBoat = new PatrolBoat("Patrol boat " + count);
+                AIList.add(AIPatrolBoat);
+                count++;
+            }
+        }
+
+        for(int i=0; i<10; i++){
+            int horizontal = 0;
+            int vertical = 1;
+            int random = Randomizer.getRandomNumberInRange(horizontal, vertical);
+            int SIZEOFSHIP = AIList.get(i).getSize();
+            
+            if(random == 0){
+                int coord_one = Randomizer.getRandomNumberInRange(0, 9);
+                int coord_two = Randomizer.getRandomNumberInRange(0, 9);
             }
         }
     }
