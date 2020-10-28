@@ -61,12 +61,27 @@ public class Grid implements Gridable{
         for(int i=0; i<10; i++){
             int horizontal = 0;
             int vertical = 1;
-            int random = Randomizer.getRandomNumberInRange(horizontal, vertical);
             int SIZEOFSHIP = AIList.get(i).getSize();
-            
+            int random = Randomizer.getRandomNumberInRange(horizontal, vertical);
+
             if(random == 0){
-                int coord_one = Randomizer.getRandomNumberInRange(0, 9);
-                int coord_two = Randomizer.getRandomNumberInRange(0, 9);
+                int c1_one, c1_two, c2_one, c2_two;
+                // Row
+                c1_two = Randomizer.getRandomNumberInRange(0, 9);
+                c2_two = c1_two;
+
+
+                // TODO
+
+                // Column
+
+                c1_one = Randomizer.getRandomNumberInRange(0, 9);
+
+                // TODO
+            }
+            if(random == 1){
+                int c1_one, c1_two, c2_one, c2_two;
+
             }
         }
     }
