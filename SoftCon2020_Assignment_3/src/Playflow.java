@@ -70,15 +70,15 @@ public class Playflow {
                 playRound();
             }
             else {
-                if (ai_grid_hidden[position.charAt(0)][position.charAt(1)]== " "){
-                    ai_grid_public[position.charAt(0)][position.charAt(1)]= "o";
-                    ai_grid_hidden[position.charAt(0)][position.charAt(1)]= "o";
+                if (ai_grid_hidden[Transformer.transformCoord(position.charAt(0))][position.charAt(1)]== " "){
+                    ai_grid_public[Transformer.transformCoord(position.charAt(0))][position.charAt(1)]= "o";
+                    ai_grid_hidden[Transformer.transformCoord(position.charAt(0))][position.charAt(1)]= "o";
                     //AI_attack();
                     //print ai_grid_public and player grid and scoreboard
                 }
                else{
-                   ai_grid_public[position.charAt(0)][position.charAt(1)] = "X";
-                   ai_grid_hidden[position.charAt(0)][position.charAt(1)] = "X";
+                   ai_grid_public[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
+                   ai_grid_hidden[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
                    //check if a whole ship has been hit, update grid if neccessary and
                     // update boats remaining/Scoreboard if neccessary
                     //print updated grids and scoreboard
