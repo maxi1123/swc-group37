@@ -1,7 +1,6 @@
 public class Main {
     public static void main(String[] args){
-        Playflow new_game = Playflow.getInstance();
-        new_game.initializeGame();
+        Playflow.initializeGame();
 
 //        System.out.print("\n");
 //        System.out.print("Your board is: ");

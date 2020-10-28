@@ -5,17 +5,6 @@ import java.util.Scanner;
 
 public class Playflow {
 
-    private static Playflow uniqueInstance;
-
-    private Playflow() {}
-
-    public static Playflow getInstance(){
-        if (uniqueInstance == null){
-            uniqueInstance = new Playflow();
-        }
-        return uniqueInstance;
-    }
-
     public static void initializeGame(){
         System.out.println("Welcome to Battleship!!");
         Grid player_grid = new Grid();
