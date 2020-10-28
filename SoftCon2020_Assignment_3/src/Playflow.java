@@ -20,8 +20,10 @@ public class Playflow {
         System.out.println("Welcome to Battleship!!");
         Grid player_grid = new Grid();
         player_grid.buildGrid();
-        Grid ai_grid = new Grid();
-        ai_grid.buildGrid();
+        Grid ai_grid_hidden = new Grid();
+        ai_grid_hidden.buildAIgrid();
+        Grid ai_grid_public= new Grid();
+        ai_grid_public.buildGrid();
 
         ArrayList<Ship> shipList = new ArrayList<>();
 
@@ -68,16 +70,30 @@ public class Playflow {
         }
         if (player.getRemaining() == 0) {
             System.out.println("You lost");
-        } else {
+        }
+        else {
             Scanner input = new Scanner(System.in);
-            System.out.print("Please enter the position of your attacking coordinates");
+            System.out.print("Please enter the position of your attacking coordinates:");
             String position = input.next();
             if (ValidateCoordinates(position) == false) {
+                //also check if coordinates were already chosen;
                 System.out.println("Your Coordinates are invalid");
                 playRound();
             }
             else {
-                if ()
+                if (ai_grid_hidden[position.charAt(0)][position.charAt(1)]== " "){
+                    ai_grid_public[position.charAt(0)][position.charAt(1)]= "o";
+                    ai_grid_hidden[position.charAt(0)][position.charAt(1)]= "o";
+                    //AI_attack();
+                    //print ai_grid_public and player grid and scoreboard
+                }
+               else{
+                   ai_grid_public[position.charAt(0)][position.charAt(1)] = "X";
+                   ai_grid_hidden[position.charAt(0)][position.charAt(1)] = "X";
+                   //check if a whole ship has been hit, update grid if neccessary and
+                    // update boats remaining/Scoreboard if neccessary
+                    //print updated grids and scoreboard
+                    playRound();
             }
         }
     }
