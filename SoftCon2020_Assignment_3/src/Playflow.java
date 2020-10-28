@@ -65,7 +65,8 @@ public class Playflow {
             Scanner input = new Scanner(System.in);
             System.out.print("Please enter the position of your attacking coordinates:");
             String position = input.next();
-            if (ValidateCoordinates(position) == false) {
+            AIValidator AIVal = new AIValidator();
+            if (AIVal.ValidateCoordinates(position, ai_grid_public) == false) {
                 //also check if coordinates were already chosen;
                 System.out.println("Your Coordinates are invalid");
                 playRound();
