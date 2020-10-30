@@ -45,6 +45,7 @@ public class Playflow {
     public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden) {
         Enemy enemy = Enemy.getInstance();
         Player player = Player.getInstance();
+        Scoreboard scoreboard=new Scoreboard();
         if (enemy.getRemaining() == 0) {
             System.out.println("You won");
         }
@@ -55,15 +56,16 @@ public class Playflow {
             System.out.print("Please enter the position of your attacking coordinates:");
             String position = input.next();
             if (!Validator.playerAttackValidate(position, ai_grid_public)) {
-                //also check if coordinates were already chosen;
                 System.out.println("Your Coordinates are invalid");
                 playRound(ai_grid_public, ai_grid_hidden);
             } else {
-                if (ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] == " ") {
+                if (ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] == "[ ]") {
                     ai_grid_public.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "o";
                     ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "o";
-                    //AI_attack();
+                    //AI_attack(player_grid)-->also change boats remaining if necessary and Scoreboard!;
                     //print ai_grid_public and player grid and scoreboard
+                    scoreboard.printScoreboard();
+
                 } else {
                     ai_grid_public.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
                     ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
@@ -71,6 +73,7 @@ public class Playflow {
                     // update boats remaining/Scoreboard if neccessary
                     //print updated grids and scoreboard
                     playRound(ai_grid_public, ai_grid_hidden);
+                    scoreboard.printScoreboard();
                 }
             }
         }
