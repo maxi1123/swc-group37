@@ -19,11 +19,9 @@ public class Grid implements Gridable{
         }
     }
 
-
-    public void placeAI(){
+    public ArrayList<Ship> generateAIFleet(){
 
         ArrayList<Ship> AIList = new ArrayList<>();
-
         // Loop for populating ArrayList<Ship> shipList with all available ships.
 
         int count = 1;
@@ -57,28 +55,69 @@ public class Grid implements Gridable{
                 count++;
             }
         }
+        return AIList;
+    }
 
-        for(int i=0; i<10; i++){
+    public void placeAI(ArrayList<Ship> AIList, int count, Grid ai_grid_hidden){
+        while(count<10){
             int horizontal = 0;
             int vertical = 1;
-            int SIZEOFSHIP = AIList.get(i).getSize();
+            int SIZEOFSHIP = AIList.get(count).getSize();
             int random = Randomizer.getRandomNumberInRange(horizontal, vertical);
 
             if(random == 0){
                 int c1_one, c1_two, c2_one, c2_two;
+
                 // Row
+
                 c1_two = Randomizer.getRandomNumberInRange(0, 9);
                 c2_two = c1_two;
 
-
-                // TODO
-
-                // Column
+                // Column (if horizontal, row coordinates stay the same)
 
                 c1_one = Randomizer.getRandomNumberInRange(0, 9);
 
+                // Placement from right to left
+
+                if (c1_one - (SIZEOFSHIP-1) >= 0){
+                    for (int i = c1_one - (SIZEOFSHIP-1); i<c1_one+1; i++){
+                        if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
+                            continue;
+                        }
+                        else{
+                            placeAI(AIList, count, ai_grid_hidden);
+                        }
+                    }
+                    // insert();
+                    // count++;
+                }
+                
+                // Placement from left to right
+
+                else{
+                    if (c1_one + (SIZEOFSHIP-1) <= 9){
+                        for (int i = c1_one; i<c1_one+(SIZEOFSHIP-1); i++){
+                            if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
+                                continue;
+                            }
+                            else{
+                                placeAI(AIList, count, ai_grid_hidden);
+                            }
+                        }
+                        // insert();
+                        // count++;
+
+                    }
+                    else{
+                        placeAI(AIList, count, ai_grid_hidden);
+                    }
+
+                }
+
                 // TODO
             }
+
+
             if(random == 1){
                 int c1_one, c1_two, c2_one, c2_two;
 

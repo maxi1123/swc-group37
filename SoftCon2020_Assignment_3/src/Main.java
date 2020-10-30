@@ -1,10 +1,14 @@
+import boats.*;
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args){
         Grid player_grid = new Grid();
         player_grid.buildGrid();
         Grid ai_grid_hidden = new Grid();
         ai_grid_hidden.buildGrid();
-        ai_grid_hidden.placeAI();
+        ArrayList<Ship> AIList = ai_grid_hidden.generateAIFleet();
+        ai_grid_hidden.placeAI(AIList, 0, ai_grid_hidden);
         Grid ai_grid_public = new Grid();
         ai_grid_public.buildGrid();
         Playflow.initializeGame(player_grid);
