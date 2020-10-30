@@ -86,6 +86,7 @@ public class Grid implements Gridable{
                         }
                         else{
                             placeAI(AIList, count, ai_grid_hidden);
+                            return;
                         }
                     }
                     Insert(AIList.get(count),Transformer.IntToStringTransform1(c1_one-(SIZEOFSHIP-1), c1_two), Transformer.IntToStringTransform1(c1_one, c2_two));
@@ -102,6 +103,7 @@ public class Grid implements Gridable{
                             }
                             else{
                                 placeAI(AIList, count, ai_grid_hidden);
+                                return;
                             }
                         }
                         Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two), Transformer.IntToStringTransform1(c1_one + (SIZEOFSHIP-1), c2_two));
@@ -110,6 +112,7 @@ public class Grid implements Gridable{
                     }
                     else{
                         placeAI(AIList, count, ai_grid_hidden);
+                        return;
                     }
 
                 }
@@ -138,6 +141,7 @@ public class Grid implements Gridable{
                         }
                         else{
                             placeAI(AIList, count, ai_grid_hidden);
+                            return;
                         }
                     }
                     Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two), Transformer.IntToStringTransform1(c2_one, c1_two + (SIZEOFSHIP-1)));
@@ -154,6 +158,7 @@ public class Grid implements Gridable{
                             }
                             else{
                                 placeAI(AIList, count, ai_grid_hidden);
+                                return;
                             }
                         }
                         Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two - (SIZEOFSHIP-1)), Transformer.IntToStringTransform1(c2_one, c1_two));
@@ -162,6 +167,7 @@ public class Grid implements Gridable{
                     }
                     else{
                         placeAI(AIList, count, ai_grid_hidden);
+                        return;
                     }
                 }
             }
