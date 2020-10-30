@@ -5,15 +5,8 @@ import java.util.Scanner;
 
 public class Playflow {
 
-    public static void initializeGame() {
+    public static void initializeGame(Grid player_grid) {
         System.out.println("Welcome to Battleship!!");
-        Grid player_grid = new Grid();
-        player_grid.buildGrid();
-        Grid ai_grid_hidden = new Grid();
-        ai_grid_hidden.buildGrid();
-        ai_grid_hidden.placeAI();
-        Grid ai_grid_public = new Grid();
-        ai_grid_public.buildGrid();
 
         ArrayList<Ship> playerList = new ArrayList<>();
 
@@ -49,7 +42,7 @@ public class Playflow {
         }
     }
 
-    public static void playRound() {
+    public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden) {
         Enemy enemy = Enemy.getInstance();
         Player player = Player.getInstance();
         if (enemy.getRemaining() == 0) {
@@ -65,20 +58,20 @@ public class Playflow {
             if (AIVal.ValidateCoordinates(position, ai_grid_public) == false) {
                 //also check if coordinates were already chosen;
                 System.out.println("Your Coordinates are invalid");
-                playRound();
+                playRound(ai_grid_public, ai_grid_hidden);
             } else {
-                if (ai_grid_hidden[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] == " ") {
-                    ai_grid_public[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "o";
-                    ai_grid_hidden[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "o";
+                if (ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] == " ") {
+                    ai_grid_public.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "o";
+                    ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "o";
                     //AI_attack();
                     //print ai_grid_public and player grid and scoreboard
                 } else {
-                    ai_grid_public[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
-                    ai_grid_hidden[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
+                    ai_grid_public.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
+                    ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
                     //check if a whole ship has been hit, update grid if neccessary and
                     // update boats remaining/Scoreboard if neccessary
                     //print updated grids and scoreboard
-                    playRound();
+                    playRound(ai_grid_public, ai_grid_hidden);
                 }
             }
         }

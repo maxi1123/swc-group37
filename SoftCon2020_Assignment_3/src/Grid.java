@@ -1,7 +1,6 @@
 import boats.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Grid implements Gridable{
     private final int columns = 10;
@@ -19,6 +18,7 @@ public class Grid implements Gridable{
             }
         }
     }
+
 
     public void placeAI(){
 
