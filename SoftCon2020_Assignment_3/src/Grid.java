@@ -59,11 +59,11 @@ public class Grid implements Gridable{
     }
 
     public void placeAI(ArrayList<Ship> AIList, int count, Grid ai_grid_hidden){
+        final int horizontal = 0;
+        final int vertical = 1;
         while(count<10){
-            int horizontal = 0;
-            int vertical = 1;
-            int SIZEOFSHIP = AIList.get(count).getSize();
             int random = Randomizer.getRandomNumberInRange(horizontal, vertical);
+            int SIZEOFSHIP = AIList.get(count).getSize();
 
             if(random == 0){
                 int c1_one, c1_two, c2_one, c2_two;

@@ -11,7 +11,7 @@ public class Validator {
         String Field1 = input.next();
         String Field2 = input.next();
         //working with ASCII values to find if gap between fields is valid for the ship length
-        if ((Field1.charAt(0) == Field2.charAt(0)) && (Field1.charAt(0) <= 'J') && (Field2.charAt(0) <= 'J') && (Field1.length() == 1) && (Field2.length() == 1)) {
+        if ((Field1.charAt(0) == Field2.charAt(0)) && (Field1.charAt(0) <= 'J') && (Field2.charAt(0) <= 'J')) {
             if (Field2.charAt(1) - Field1.charAt(1) + 1 == ship.getSize()) {
                 for (int i = 0; i < ship.getSize(); i++) {
                     if (ocean.grid[i+Field1.charAt(1)-'0'][Field1.charAt(0) - 'A'] != "[ ]") {
