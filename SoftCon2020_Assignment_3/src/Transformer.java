@@ -7,4 +7,7 @@ public class Transformer {
         String[] charlist = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
         return charlist[coordinate];
     }
+    public static String IntToStringTransform1(int one, int two){
+       return inverseTransform(one) + two;
+    }
 }

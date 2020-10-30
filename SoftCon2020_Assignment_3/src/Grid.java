@@ -88,8 +88,8 @@ public class Grid implements Gridable{
                             placeAI(AIList, count, ai_grid_hidden);
                         }
                     }
-                    // insert();
-                    // count++;
+                    Insert(AIList.get(count),Transformer.IntToStringTransform1(c1_one-(SIZEOFSHIP-1), c1_two), Transformer.IntToStringTransform1(c1_one, c2_two));
+                    count++;
                 }
 
                 // Placement from left to right
@@ -104,7 +104,7 @@ public class Grid implements Gridable{
                                 placeAI(AIList, count, ai_grid_hidden);
                             }
                         }
-                        // insert();
+                        Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two), Transformer.IntToStringTransform1(c1_one + (SIZEOFSHIP-1), c2_two));
                         count++;
 
                     }
@@ -140,7 +140,7 @@ public class Grid implements Gridable{
                             placeAI(AIList, count, ai_grid_hidden);
                         }
                     }
-                    // insert();
+                    Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two), Transformer.IntToStringTransform1(c2_one, c1_two + (SIZEOFSHIP-1)));
                     count++;
                 }
 
@@ -156,8 +156,8 @@ public class Grid implements Gridable{
                                 placeAI(AIList, count, ai_grid_hidden);
                             }
                         }
-                        // insert();
-                        // count++;
+                        Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two - (SIZEOFSHIP-1)), Transformer.IntToStringTransform1(c2_one, c1_two));
+                        count++;
 
                     }
                     else{
