@@ -3,4 +3,8 @@ public class Transformer {
         String charlist = "ABCDEFGHIJ";
         return charlist.indexOf(coordinate);
     }
+    public static String inverseTransform(int coordinate){
+        String[] charlist = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+        return charlist[coordinate];
+    }
 }

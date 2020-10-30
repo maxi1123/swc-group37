@@ -91,7 +91,7 @@ public class Grid implements Gridable{
                     // insert();
                     // count++;
                 }
-                
+
                 // Placement from left to right
 
                 else{
@@ -105,7 +105,7 @@ public class Grid implements Gridable{
                             }
                         }
                         // insert();
-                        // count++;
+                        count++;
 
                     }
                     else{
@@ -114,13 +114,56 @@ public class Grid implements Gridable{
 
                 }
 
-                // TODO
             }
 
 
             if(random == 1){
                 int c1_one, c1_two, c2_one, c2_two;
 
+                // Row
+
+                c1_one = Randomizer.getRandomNumberInRange(0, 9);
+                c2_one = c1_one;
+
+                // Column (if horizontal, row coordinates stay the same)
+
+                c1_two = Randomizer.getRandomNumberInRange(0, 9);
+
+                // Placement from top downwards
+
+                if (c1_two + (SIZEOFSHIP-1) <= 9){
+                    for (int i = c1_two; i<c1_two+(SIZEOFSHIP-1); i++){
+                        if(ai_grid_hidden.grid[c1_two][i] == "[ ]"){
+                            continue;
+                        }
+                        else{
+                            placeAI(AIList, count, ai_grid_hidden);
+                        }
+                    }
+                    // insert();
+                    count++;
+                }
+
+                // Placement from bottom to top
+
+                else{
+                    if (c1_two - (SIZEOFSHIP-1) >= 0){
+                        for (int i = c1_two-(SIZEOFSHIP-1); i<c1_two+1; i++){
+                            if(ai_grid_hidden.grid[c1_two][i] == "[ ]"){
+                                continue;
+                            }
+                            else{
+                                placeAI(AIList, count, ai_grid_hidden);
+                            }
+                        }
+                        // insert();
+                        // count++;
+
+                    }
+                    else{
+                        placeAI(AIList, count, ai_grid_hidden);
+                    }
+                }
             }
         }
     }
