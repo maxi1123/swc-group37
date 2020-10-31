@@ -57,9 +57,9 @@ public class Playflow {
                 System.out.println("Your Coordinates are invalid");
                 playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
             } else {
-                if (ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1) - '0'].equals("[ ]")) {
-                    ai_grid_public.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1) - '0'] = "o";
-                    ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1) - '0'] = "o";
+                if (ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))].equals("[ ]")) {
+                    ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[o]";
+                    ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[o]";
                     /* AI_attack(player_grid)-->also change boats remaining if necessary and Scoreboard!; */
                     System.out.println("\n" + "Your Board is:" + "\n");
                     player_grid.printGrid();
@@ -70,8 +70,8 @@ public class Playflow {
                     playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
 
                 } else {
-                    ai_grid_public.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1) - '0'] = "X";
-                    ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1) - '0'] = "X";
+                    ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
+                    ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
                     //check if a whole ship has been hit, update grid if neccessary and
                     //update boats remaining/Scoreboard if neccessary
                     //AI_ATTACK(player_grid, scoreboard, enemy, player)
