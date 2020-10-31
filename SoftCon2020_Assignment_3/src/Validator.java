@@ -52,7 +52,9 @@ public class Validator {
     public static boolean playerAttackValidate(String position, Grid AIGrid){
         Transformer t = new Transformer();
         int LetterPos = t.transformCoord(position.charAt(0));
-        int NumberPos = position.charAt(1);
+        int NumberPos = position.charAt(1) - '0';
+        System.out.println(LetterPos);
+        System.out.println(NumberPos);
         if (position.length() == 2){
             if(LetterPos <= 9 && NumberPos <= 9){
                 if( AIGrid.grid[NumberPos][LetterPos] == "[ ]"){
