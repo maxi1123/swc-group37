@@ -1,5 +1,6 @@
 import boats.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,10 +43,7 @@ public class Playflow {
         }
     }
 
-    public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden) {
-        Enemy enemy = Enemy.getInstance();
-        Player player = Player.getInstance();
-        Scoreboard scoreboard=new Scoreboard();
+    public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden, Grid player_grid, Scoreboard scoreboard, Player player, Enemy enemy) {
         if (enemy.getRemaining() == 0) {
             System.out.println("You won");
         }
@@ -57,23 +55,34 @@ public class Playflow {
             String position = input.next();
             if (!Validator.playerAttackValidate(position, ai_grid_public)) {
                 System.out.println("Your Coordinates are invalid");
-                playRound(ai_grid_public, ai_grid_hidden);
+                playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
             } else {
-                if (ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] == "[ ]") {
+                if (ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)].equals("[ ]")) {
                     ai_grid_public.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "o";
                     ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "o";
-                    //AI_attack(player_grid)-->also change boats remaining if necessary and Scoreboard!;
-                    //print ai_grid_public and player grid and scoreboard
+                    /* AI_attack(player_grid)-->also change boats remaining if necessary and Scoreboard!; */
+                    System.out.println("\n" + "Your Board is:" + "\n");
+                    player_grid.printGrid();
+                    System.out.println(("\n"+ "Your opponents board is:" + "\n"));
+                    ai_grid_public.printGrid();
+                    System.out.println("\n"+ "Your Scoreboard is:" + "\n");
                     scoreboard.printScoreboard();
+                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
 
                 } else {
                     ai_grid_public.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
                     ai_grid_hidden.grid[Transformer.transformCoord(position.charAt(0))][position.charAt(1)] = "X";
                     //check if a whole ship has been hit, update grid if neccessary and
-                    // update boats remaining/Scoreboard if neccessary
+                    //update boats remaining/Scoreboard if neccessary
+                    //AI_ATTACK(player_grid, scoreboard, enemy, player)
                     //print updated grids and scoreboard
-                    playRound(ai_grid_public, ai_grid_hidden);
+                    System.out.println("\n" + "Your Board is:" + "\n");
+                    player_grid.printGrid();
+                    System.out.println(("\n"+ "Your opponents board is:" + "\n"));
+                    ai_grid_public.printGrid();
+                    System.out.println("\n"+ "Your Scoreboard is:" + "\n");
                     scoreboard.printScoreboard();
+                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
                 }
             }
         }
