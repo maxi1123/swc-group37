@@ -51,7 +51,7 @@ public class Playflow {
             System.out.println("You lost");
         } else {
             Scanner input = new Scanner(System.in);
-            System.out.print("Please enter the position of your attacking coordinates:");
+            System.out.print("\n" + "Enter the position you want to attack:");
             String position = input.next();
             if (!Validator.playerAttackValidate(position, ai_grid_public)) {
                 System.out.println("Your Coordinates are invalid");
@@ -61,11 +61,11 @@ public class Playflow {
                     ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[o]";
                     ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[o]";
                     /* AI_attack(player_grid)-->also change boats remaining if necessary and Scoreboard!; */
-                    System.out.println("\n" + "Your Board is:" + "\n");
+                    System.out.println("\n" + "Your board is:");
                     player_grid.printGrid();
-                    System.out.println(("\n"+ "Your opponents board is:" + "\n"));
+                    System.out.print("\n");
+                    System.out.println(("\n" + "Your opponents board is:"));
                     ai_grid_public.printGrid();
-                    System.out.println("\n"+ "Your Scoreboard is:" + "\n");
                     scoreboard.printScoreboard();
                     playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
 
@@ -76,11 +76,11 @@ public class Playflow {
                     //update boats remaining/Scoreboard if neccessary
                     //AI_ATTACK(player_grid, scoreboard, enemy, player)
                     //print updated grids and scoreboard
-                    System.out.println("\n" + "Your Board is:" + "\n");
+                    System.out.println("\n" + "Your board is:");
                     player_grid.printGrid();
-                    System.out.println(("\n"+ "Your opponents board is:" + "\n"));
+                    System.out.print("\n");
+                    System.out.println(("\n" + "Your opponents board is:"));
                     ai_grid_public.printGrid();
-                    System.out.println("\n"+ "Your Scoreboard is:" + "\n");
                     scoreboard.printScoreboard();
                     playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
                 }
