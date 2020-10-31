@@ -1,5 +1,7 @@
 package boats;
 
+import java.util.ArrayList;
+
 /**
  * Simple interface for building a Ship for 2D Battleships.
  * @version 1.0
@@ -30,4 +32,11 @@ public interface Ship {
 
     char getType();
 
+    void updateCoordlist(int c1_one, int c1_two);
+
+    int getCoordlength();
+
+    ArrayList<String> getCoordlist();
+
+    void replaceCoordlist(ArrayList<String> coordlist);
 }

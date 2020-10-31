@@ -82,9 +82,14 @@ public class Grid implements Gridable{
                 if (c1_two - (SIZEOFSHIP-1) >= 0){
                     for (int i = c1_two; i>c1_two-SIZEOFSHIP; i--){
                         if(ai_grid_hidden.grid[c1_one][i] == "[ ]"){
+                            AIList.get(count).updateCoordlist(c1_one, c1_two);
                             continue;
                         }
                         else{
+                            int length = AIList.get(count).getCoordlength();
+                            for (int j = length; j>=0; j--){
+                                AIList.get(count).getCoordlist().remove(j);
+                            }
                             placeAI(AIList, count, ai_grid_hidden);
                             return;
                         }
@@ -92,6 +97,7 @@ public class Grid implements Gridable{
                     // Insert(AIList.get(count),Transformer.IntToStringTransform1(c1_one-(SIZEOFSHIP-1), c1_two), Transformer.IntToStringTransform1(c1_one, c2_two));
                     int check = 0;
                     insertAI(AIList.get(count), c1_one, c1_two, check, ai_grid_hidden);
+                    AIList.get(count).updateCoordlist(c1_one, c1_two);
                     count++;
                 }
 
