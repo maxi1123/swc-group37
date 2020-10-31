@@ -17,9 +17,11 @@ public class Main {
         Enemy enemy = Enemy.getInstance();
         Player player = Player.getInstance();
         Scoreboard scoreboard=new Scoreboard();
-        System.out.println("Your Board is:" + "\n");
+        System.out.println("\n" + "Your board is:");
         player_grid.printGrid();
-        System.out.println("Your opponents board is:" + "\n");
+        System.out.print("\n");
+        System.out.print("\n");
+        System.out.println("Your opponents board is:");
         ai_grid_public.printGrid();
         scoreboard.printScoreboard();
         Playflow.playRound(ai_grid_public,
@@ -28,16 +30,6 @@ public class Main {
                 scoreboard,
                 player,
                 enemy);
-
-//        System.out.print("\n");
-//        System.out.print("Your board is: ");
-//        System.out.print("\n");
-//        player_grid.printGrid();
-//        System.out.print("\n");
-//        System.out.print("\n");
-//        System.out.print("Your opponent's board is: ");
-//        System.out.print("\n");
-//        ai_grid.printGrid();
     }
 
 }

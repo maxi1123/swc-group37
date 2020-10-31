@@ -7,6 +7,7 @@ public class Scoreboard {
         Boats_remaining=boats_remaining;
     }
     public void printScoreboard(){
-        System.out.println("Your Scoreboard is:" + "\n" + "- Player remaining Boats:" + Boats_remaining + "\n" + "- Enemy Boats destroyed" + Boats_destroyed);
+        System.out.print("\n");
+        System.out.println("\n" + "Your scoreboard:" + "\n" + "- Player remaining Boats: " + Boats_remaining + "\n" + "- Enemy Boats destroyed: " + Boats_destroyed);
     }
 }
