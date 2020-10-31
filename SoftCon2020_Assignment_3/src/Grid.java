@@ -81,7 +81,7 @@ public class Grid implements Gridable{
 
                 if (c1_one - (SIZEOFSHIP-1) >= 0){
                     for (int i = c1_one - (SIZEOFSHIP-1); i<c1_one+1; i++){
-                        if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
+                        if(ai_grid_hidden.grid[c1_two][i] == "[ ]"){
                             continue;
                         }
                         else{
@@ -98,7 +98,7 @@ public class Grid implements Gridable{
                 else{
                     if (c1_one + (SIZEOFSHIP-1) <= 9){
                         for (int i = c1_one; i<c1_one+(SIZEOFSHIP-1); i++){
-                            if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
+                            if(ai_grid_hidden.grid[c1_two][i] == "[ ]"){
                                 continue;
                             }
                             else{
@@ -136,7 +136,7 @@ public class Grid implements Gridable{
 
                 if (c1_two + (SIZEOFSHIP-1) <= 9){
                     for (int i = c1_two; i<c1_two+(SIZEOFSHIP-1); i++){
-                        if(ai_grid_hidden.grid[c1_two][i] == "[ ]"){
+                        if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
                             continue;
                         }
                         else{
@@ -153,7 +153,7 @@ public class Grid implements Gridable{
                 else{
                     if (c1_two - (SIZEOFSHIP-1) >= 0){
                         for (int i = c1_two-(SIZEOFSHIP-1); i<c1_two+1; i++){
-                            if(ai_grid_hidden.grid[c1_two][i] == "[ ]"){
+                            if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
                                 continue;
                             }
                             else{
