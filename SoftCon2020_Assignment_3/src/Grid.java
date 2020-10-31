@@ -70,18 +70,18 @@ public class Grid implements Gridable{
 
                 // Row
 
-                c1_two = Randomizer.getRandomNumberInRange(0, 9);
-                c2_two = c1_two;
+                c1_one = Randomizer.getRandomNumberInRange(0, 9);
+                c2_one = c1_one;
 
                 // Column (if horizontal, row coordinates stay the same)
 
-                c1_one = Randomizer.getRandomNumberInRange(0, 9);
+                c1_two = Randomizer.getRandomNumberInRange(0, 9);
 
                 // Placement from right to left
 
-                if (c1_one - (SIZEOFSHIP-1) >= 0){
-                    for (int i = c1_one - (SIZEOFSHIP-1); i<c1_one+1; i++){
-                        if(ai_grid_hidden.grid[c1_two][i] == "[ ]"){
+                if (c1_two - (SIZEOFSHIP-1) >= 0){
+                    for (int i = c1_two; i>c1_two-SIZEOFSHIP; i--){
+                        if(ai_grid_hidden.grid[c1_one][i] == "[ ]"){
                             continue;
                         }
                         else{
@@ -89,16 +89,18 @@ public class Grid implements Gridable{
                             return;
                         }
                     }
-                    Insert(AIList.get(count),Transformer.IntToStringTransform1(c1_one-(SIZEOFSHIP-1), c1_two), Transformer.IntToStringTransform1(c1_one, c2_two));
+                    // Insert(AIList.get(count),Transformer.IntToStringTransform1(c1_one-(SIZEOFSHIP-1), c1_two), Transformer.IntToStringTransform1(c1_one, c2_two));
+                    int check = 0;
+                    insertAI(AIList.get(count), c1_one, c1_two, check, ai_grid_hidden);
                     count++;
                 }
 
                 // Placement from left to right
 
                 else{
-                    if (c1_one + (SIZEOFSHIP-1) <= 9){
-                        for (int i = c1_one; i<c1_one+(SIZEOFSHIP-1); i++){
-                            if(ai_grid_hidden.grid[c1_two][i] == "[ ]"){
+                    if (c1_two + (SIZEOFSHIP-1) <= 9){
+                        for (int i = c1_two; i<c1_two+SIZEOFSHIP; i++){
+                            if(ai_grid_hidden.grid[c1_one][i] == "[ ]"){
                                 continue;
                             }
                             else{
@@ -106,7 +108,9 @@ public class Grid implements Gridable{
                                 return;
                             }
                         }
-                        Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two), Transformer.IntToStringTransform1(c1_one + (SIZEOFSHIP-1), c2_two));
+                        //Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two), Transformer.IntToStringTransform1(c1_one + (SIZEOFSHIP-1), c2_two));
+                        int check = 1;
+                        insertAI(AIList.get(count), c1_one, c1_two, check, ai_grid_hidden);
                         count++;
 
                     }
@@ -125,17 +129,17 @@ public class Grid implements Gridable{
 
                 // Row
 
-                c1_one = Randomizer.getRandomNumberInRange(0, 9);
-                c2_one = c1_one;
+                c1_two = Randomizer.getRandomNumberInRange(0, 9);
+                c2_two = c1_two;
 
                 // Column (if horizontal, row coordinates stay the same)
 
-                c1_two = Randomizer.getRandomNumberInRange(0, 9);
+                c1_one = Randomizer.getRandomNumberInRange(0, 9);
 
                 // Placement from top downwards
 
-                if (c1_two + (SIZEOFSHIP-1) <= 9){
-                    for (int i = c1_two; i<c1_two+(SIZEOFSHIP-1); i++){
+                if (c1_one + (SIZEOFSHIP-1) <= 9){
+                    for (int i = c1_one; i<c1_one+SIZEOFSHIP; i++){
                         if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
                             continue;
                         }
@@ -144,15 +148,17 @@ public class Grid implements Gridable{
                             return;
                         }
                     }
-                    Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two), Transformer.IntToStringTransform1(c2_one, c1_two + (SIZEOFSHIP-1)));
+                    // Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two), Transformer.IntToStringTransform1(c2_one, c1_two + (SIZEOFSHIP-1)));
+                    int check = 2;
+                    insertAI(AIList.get(count), c1_one, c1_two, check, ai_grid_hidden);
                     count++;
                 }
 
                 // Placement from bottom to top
 
                 else{
-                    if (c1_two - (SIZEOFSHIP-1) >= 0){
-                        for (int i = c1_two-(SIZEOFSHIP-1); i<c1_two+1; i++){
+                    if (c1_one - (SIZEOFSHIP-1) >= 0){
+                        for (int i = c1_one; i>c1_one-SIZEOFSHIP; i--){
                             if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
                                 continue;
                             }
@@ -161,7 +167,9 @@ public class Grid implements Gridable{
                                 return;
                             }
                         }
-                        Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two - (SIZEOFSHIP-1)), Transformer.IntToStringTransform1(c2_one, c1_two));
+                        // Insert(AIList.get(count), Transformer.IntToStringTransform1(c1_one, c1_two - (SIZEOFSHIP-1)), Transformer.IntToStringTransform1(c2_one, c1_two));
+                        int check = 3;
+                        insertAI(AIList.get(count), c1_one, c1_two, check, ai_grid_hidden);
                         count++;
 
                     }
@@ -170,6 +178,31 @@ public class Grid implements Gridable{
                         return;
                     }
                 }
+            }
+        }
+    }
+
+    public void insertAI(Ship ship, int start, int end, int check, Grid ai_grid_hidden){
+        // Right to left
+        if (check == 0){
+            for (int i = end; i>end - ship.getSize(); i--){
+                ai_grid_hidden.grid[start][i] = "[" + ship.getType() + "]";
+            }
+        }
+        if (check == 1){
+            for (int i = end; i<end + ship.getSize(); i++){
+                ai_grid_hidden.grid[start][i] = "[" + ship.getType() + "]";
+            }
+
+        }
+        if (check == 2){
+            for (int i = start; i<start + ship.getSize(); i++){
+                ai_grid_hidden.grid[i][end] = "[" + ship.getType() + "]";
+            }
+        }
+        if (check == 3){
+            for (int i = start; i>start - ship.getSize(); i--){
+                ai_grid_hidden.grid[i][end] = "[" + ship.getType() + "]";
             }
         }
     }
@@ -201,6 +234,7 @@ public class Grid implements Gridable{
             }
         }
     }
+
 
     // Method responsible for inserting a ship in a given position. Implemented in Validator.InputValidate.
 

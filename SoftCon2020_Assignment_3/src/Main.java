@@ -12,11 +12,16 @@ public class Main {
         ai_grid_hidden.buildGrid();
         ArrayList<Ship> AIList = ai_grid_hidden.generateAIFleet();
         ai_grid_hidden.placeAI(AIList, 0, ai_grid_hidden);
+
+        // TODO
+        ai_grid_hidden.printGrid();
+        // TODO
+
         Grid ai_grid_public = new Grid();
         ai_grid_public.buildGrid();
         Enemy enemy = Enemy.getInstance();
         Player player = Player.getInstance();
-        Scoreboard scoreboard=new Scoreboard();
+        Scoreboard scoreboard = new Scoreboard();
         System.out.println("\n" + "Your board is:");
         player_grid.printGrid();
         System.out.print("\n");
