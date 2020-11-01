@@ -46,9 +46,11 @@ public class Playflow {
     public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden, Grid player_grid, Scoreboard scoreboard, Player player, Enemy enemy, ArrayList<Ship> AIlist) {
         if (enemy.getRemaining() == 0) {
             System.out.println("Congratulations, you won!");
+            return;
         }
         if (player.getRemaining() == 0) {
             System.out.println("Sorry, you lost!");
+            return;
         } else {
             Scanner input = new Scanner(System.in);
             System.out.print("\n" + "Enter the position you want to attack: ");
