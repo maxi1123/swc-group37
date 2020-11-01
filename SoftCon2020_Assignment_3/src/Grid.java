@@ -88,7 +88,7 @@ public class Grid implements Gridable{
                         else{
                             int length = AIList.get(count).getCoordlength();
                             if(length>0){
-                                for (int j = 0; j<length; j++){
+                                for (int j = length-1; j>=0; j--){
                                     AIList.get(count).getCoordlist().remove(j);
                                 }
                             }
@@ -114,7 +114,7 @@ public class Grid implements Gridable{
                             else{
                                 int length = AIList.get(count).getCoordlength();
                                 if(length>0){
-                                    for (int j = 0; j<length; j++){
+                                    for (int j = length-1; j>=0; j--){
                                         AIList.get(count).getCoordlist().remove(j);
                                     }
                                 }
@@ -161,7 +161,7 @@ public class Grid implements Gridable{
                         else{
                             int length = AIList.get(count).getCoordlength();
                             if(length>0){
-                                for (int j = 0; j<length; j++){
+                                for (int j = length-1; j>=0; j--){
                                     AIList.get(count).getCoordlist().remove(j);
                                 }
                             }
@@ -187,7 +187,7 @@ public class Grid implements Gridable{
                             else{
                                 int length = AIList.get(count).getCoordlength();
                                 if(length>0){
-                                    for (int j = 0; j<length; j++){
+                                    for (int j = length-1; j>=0; j--){
                                         AIList.get(count).getCoordlist().remove(j);
                                     }
                                 }
