@@ -43,7 +43,7 @@ public class Playflow {
         }
     }
 
-    public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden, Grid player_grid, Scoreboard scoreboard, Player player, Enemy enemy) {
+    public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden, Grid player_grid, Scoreboard scoreboard, Player player, Enemy enemy, ArrayList<Ship> AIlist) {
         if (enemy.getRemaining() == 0) {
             System.out.println("You won");
         }
@@ -55,7 +55,7 @@ public class Playflow {
             String position = input.next();
             if (!Validator.playerAttackValidate(position, ai_grid_public)) {
                 System.out.println("Your Coordinates are invalid");
-                playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
+                playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist);
             } else {
                 if (ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))].equals("[ ]")) {
                     ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[o]";
@@ -67,11 +67,27 @@ public class Playflow {
                     System.out.println(("\n" + "Your opponents board is:"));
                     ai_grid_public.printGrid();
                     scoreboard.printScoreboard();
-                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
+                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist);
 
                 } else {
                     ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
                     ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
+                    for (int i=0;i<10;i++){
+                        Ship ship = AIlist.get(i);
+                        ArrayList<String> coordlist= ship.getCoordlist();
+                        int size_coordlist = ship.getCoordlength();
+                        for (int j=size_coordlist-1; j>=0; j--){
+                            if (coordlist.get(j).equals(Integer.toString(Transformer.transformCoord(position.charAt(0))) + position.charAt(1))){
+                                coordlist.remove(j);
+                                int updated_length = ship.getCoordlength();
+                                if(updated_length==0){
+                                    enemy.updateRemaining();
+                                    player.updateDestroyed();
+                                    scoreboard.updateScoreboard(player.getDestroyed(), player.getRemaining());
+                                }
+                            }
+                        }
+                    }
                     //check if a whole ship has been hit, update grid if neccessary and
                     //update boats remaining/Scoreboard if neccessary
                     //AI_ATTACK(player_grid, scoreboard, enemy, player)
@@ -82,7 +98,7 @@ public class Playflow {
                     System.out.println(("\n" + "Your opponents board is:"));
                     ai_grid_public.printGrid();
                     scoreboard.printScoreboard();
-                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy);
+                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist);
                 }
             }
         }

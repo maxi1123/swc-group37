@@ -34,7 +34,8 @@ public class Main {
                 player_grid,
                 scoreboard,
                 player,
-                enemy);
+                enemy,
+                AIList);
     }
 
 }

@@ -15,11 +15,11 @@ public class Enemy {
     public int getRemaining(){
         return remaining_boats;
     }
-    public int getBoats_destroyed(){return boats_destroyed;}
+    public int getDestroyed(){return boats_destroyed;}
 
-    public void updateRemainingBoats(){
+    public void updateRemaining(){
         remaining_boats -= 1;
     }
-    public void updateBoatsDestroyed() { boats_destroyed += 1;}
+    public void updatDestroyed() { boats_destroyed += 1;}
 
 }
