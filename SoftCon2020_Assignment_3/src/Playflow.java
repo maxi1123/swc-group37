@@ -74,13 +74,15 @@ public class Playflow {
                     ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
                     ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
                     for (int i=0;i<10;i++){
-                        AIlist.get(i).copyCoordlist();
-                        ArrayList<String> backup = AIlist.get(i).getBackup();
+//                        AIlist.get(i).copyCoordlist();
+//                        ArrayList<String> backup = AIlist.get(i).getBackup();
                         Ship ship = AIlist.get(i);
                         ArrayList<String> coordlist= ship.getCoordlist();
                         int size_coordlist = ship.getCoordlength();
                         for (int j=size_coordlist-1; j>=0; j--){
                             if (coordlist.get(j).equals(position.charAt(1) + Integer.toString(position.charAt(0)-'A'))){
+                                AIlist.get(i).copyCoordlist();
+                                ArrayList<String> backup = AIlist.get(i).getBackup();
                                 coordlist.remove(j);
                                 int updated_length = ship.getCoordlength();
                                 if(updated_length==0){
