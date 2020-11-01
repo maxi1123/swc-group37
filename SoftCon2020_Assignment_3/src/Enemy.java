@@ -20,6 +20,6 @@ public class Enemy {
     public void updateRemaining(){
         remaining_boats -= 1;
     }
-    public void updatDestroyed() { boats_destroyed += 1;}
+    public void updateDestroyed() { boats_destroyed += 1;}
 
 }
