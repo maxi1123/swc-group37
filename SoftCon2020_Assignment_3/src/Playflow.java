@@ -58,8 +58,8 @@ public class Playflow {
                 playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist);
             } else {
                 if (ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))].equals("[ ]")) {
-                    ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[o]";
-                    ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[o]";
+                    ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[O]";
+                    ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[O]";
                     /* AI_attack(player_grid)-->also change boats remaining if necessary and Scoreboard!; */
                     System.out.println("\n" + "Your board is:");
                     player_grid.printGrid();
