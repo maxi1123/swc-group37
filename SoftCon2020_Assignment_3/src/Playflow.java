@@ -77,7 +77,7 @@ public class Playflow {
                         ArrayList<String> coordlist= ship.getCoordlist();
                         int size_coordlist = ship.getCoordlength();
                         for (int j=size_coordlist-1; j>=0; j--){
-                            if (coordlist.get(j).equals(Integer.toString(position.charAt(0)-'A') + (position.charAt(1)))){
+                            if (coordlist.get(j).equals(position.charAt(1) + Integer.toString(position.charAt(0)-'A'))){
                                 coordlist.remove(j);
                                 int updated_length = ship.getCoordlength();
                                 if(updated_length==0){
