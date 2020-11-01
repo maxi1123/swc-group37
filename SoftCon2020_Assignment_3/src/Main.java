@@ -12,6 +12,11 @@ public class Main {
         ai_grid_hidden.buildGrid();
         ArrayList<Ship> AIList = ai_grid_hidden.generateAIFleet();
         ai_grid_hidden.placeAI(AIList, 0, ai_grid_hidden);
+
+        // TEST START
+        ai_grid_hidden.printGrid();
+        // TEST END
+
         Grid ai_grid_public = new Grid();
         ai_grid_public.buildGrid();
         Enemy enemy = Enemy.getInstance();

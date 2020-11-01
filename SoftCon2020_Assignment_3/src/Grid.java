@@ -82,13 +82,15 @@ public class Grid implements Gridable{
                 if (c1_two - (SIZEOFSHIP-1) >= 0){
                     for (int i = c1_two; i>c1_two-SIZEOFSHIP; i--){
                         if(ai_grid_hidden.grid[c1_one][i] == "[ ]"){
-                            AIList.get(count).updateCoordlist(c1_one, c1_two);
+                            AIList.get(count).updateCoordlist(c1_one, i);
                             continue;
                         }
                         else{
                             int length = AIList.get(count).getCoordlength();
-                            for (int j = length; j>=0; j--){
-                                AIList.get(count).getCoordlist().remove(j);
+                            if(length>0){
+                                for (int j = 0; j<length; j++){
+                                    AIList.get(count).getCoordlist().remove(j);
+                                }
                             }
                             placeAI(AIList, count, ai_grid_hidden);
                             return;
@@ -97,7 +99,6 @@ public class Grid implements Gridable{
                     // Insert(AIList.get(count),Transformer.IntToStringTransform1(c1_one-(SIZEOFSHIP-1), c1_two), Transformer.IntToStringTransform1(c1_one, c2_two));
                     int check = 0;
                     insertAI(AIList.get(count), c1_one, c1_two, check, ai_grid_hidden);
-                    AIList.get(count).updateCoordlist(c1_one, c1_two);
                     count++;
                 }
 
@@ -107,9 +108,16 @@ public class Grid implements Gridable{
                     if (c1_two + (SIZEOFSHIP-1) <= 9){
                         for (int i = c1_two; i<c1_two+SIZEOFSHIP; i++){
                             if(ai_grid_hidden.grid[c1_one][i] == "[ ]"){
+                                AIList.get(count).updateCoordlist(c1_one, i);
                                 continue;
                             }
                             else{
+                                int length = AIList.get(count).getCoordlength();
+                                if(length>0){
+                                    for (int j = 0; j<length; j++){
+                                        AIList.get(count).getCoordlist().remove(j);
+                                    }
+                                }
                                 placeAI(AIList, count, ai_grid_hidden);
                                 return;
                             }
@@ -147,9 +155,16 @@ public class Grid implements Gridable{
                 if (c1_one + (SIZEOFSHIP-1) <= 9){
                     for (int i = c1_one; i<c1_one+SIZEOFSHIP; i++){
                         if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
+                            AIList.get(count).updateCoordlist(i, c1_two);
                             continue;
                         }
                         else{
+                            int length = AIList.get(count).getCoordlength();
+                            if(length>0){
+                                for (int j = 0; j<length; j++){
+                                    AIList.get(count).getCoordlist().remove(j);
+                                }
+                            }
                             placeAI(AIList, count, ai_grid_hidden);
                             return;
                         }
@@ -166,9 +181,16 @@ public class Grid implements Gridable{
                     if (c1_one - (SIZEOFSHIP-1) >= 0){
                         for (int i = c1_one; i>c1_one-SIZEOFSHIP; i--){
                             if(ai_grid_hidden.grid[i][c1_two] == "[ ]"){
+                                AIList.get(count).updateCoordlist(i, c1_two);
                                 continue;
                             }
                             else{
+                                int length = AIList.get(count).getCoordlength();
+                                if(length>0){
+                                    for (int j = 0; j<length; j++){
+                                        AIList.get(count).getCoordlist().remove(j);
+                                    }
+                                }
                                 placeAI(AIList, count, ai_grid_hidden);
                                 return;
                             }

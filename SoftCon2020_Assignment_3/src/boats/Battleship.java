@@ -16,6 +16,7 @@ public class Battleship implements Ship{
     public void updateCoordlist(int coordOne, int coordTwo){
         coordlist.add("" + coordOne + coordTwo);
     }
+
     public int getCoordlength(){
         return coordlist.size();
     }
