@@ -271,11 +271,13 @@ public class Grid implements Gridable{
         if(start.charAt(0)==end.charAt(0)){
             for(int i = 0;i < ship.getSize(); i++){
                 grid[start.charAt(1)+i-'0'][start.charAt(0)-'A'] = "["+ ship.getType() +"]";
+                ship.updateCoordlist(start.charAt(1)+i-'0',start.charAt(0)-'A');
             }
         }
         else{
             for(int i = 0;i < ship.getSize(); i++){
                 grid[start.charAt(1)-'0'][start.charAt(0)-'A'+i] = "["+ ship.getType() +"]";
+                ship.updateCoordlist(start.charAt(1)-'0',start.charAt(0)-'A'+i);
 
             }
         }

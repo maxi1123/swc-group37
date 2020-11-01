@@ -6,10 +6,9 @@ import java.util.Scanner;
 
 public class Playflow {
 
-    public static void initializeGame(Grid player_grid) {
+    public static void initializeGame(Grid player_grid, ArrayList<Ship> playerList) {
         System.out.println("Welcome to Battleship!!");
 
-        ArrayList<Ship> playerList = new ArrayList<>();
 
         // Loop for populating ArrayList<Ship> shipList with all available ships.
 
@@ -43,7 +42,7 @@ public class Playflow {
         }
     }
 
-    public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden, Grid player_grid, Scoreboard scoreboard, Player player, Enemy enemy, ArrayList<Ship> AIlist) {
+    public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden, Grid player_grid, Scoreboard scoreboard, Player player, Enemy enemy, ArrayList<Ship> AIlist, ArrayList<Ship> playerList) {
         if (enemy.getRemaining() == 0) {
             System.out.println("Congratulations, you won!");
             return;
@@ -57,20 +56,21 @@ public class Playflow {
             String position = input.next();
             if (!Validator.playerAttackValidate(position, ai_grid_public)) {
                 System.out.println("Your Coordinates are invalid");
-                playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist);
+                playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist, playerList);
             } else {
                 if (ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))].equals("[ ]")) {
                     ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[O]";
                     ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[O]";
                     /* AI_attack(player_grid)-->also change boats remaining if necessary and Scoreboard!; */
                     System.out.print("Miss");
+                    Attacker.AIAttack(player_grid, playerList, scoreboard, player, enemy);
                     System.out.println("\n" + "Your board is:");
                     player_grid.printGrid();
                     System.out.print("\n");
                     System.out.println(("\n" + "Your opponents board is:"));
                     ai_grid_public.printGrid();
                     scoreboard.printScoreboard();
-                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist);
+                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist, playerList);
 
                 } else {
                     ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
@@ -98,10 +98,12 @@ public class Playflow {
                                         ai_grid_public.grid[coordone][coordtwo] = "[" + ship.getType() + "]";
                                     }
 
-                                    System.out.print("You destroyed their " + ship.getName());
+                                    System.out.print("You destroyed a " + ship.getName());
+                                    Attacker.AIAttack(player_grid, playerList, scoreboard, player, enemy);
                                 }
                                 else{
                                     System.out.print("You hit a boat!");
+                                    Attacker.AIAttack(player_grid, playerList, scoreboard, player, enemy);
                                 }
                             }
                         }
@@ -116,7 +118,7 @@ public class Playflow {
                     System.out.println(("\n" + "Your opponents board is:"));
                     ai_grid_public.printGrid();
                     scoreboard.printScoreboard();
-                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist);
+                    playRound(ai_grid_public, ai_grid_hidden, player_grid, scoreboard, player, enemy, AIlist, playerList);
                 }
             }
         }

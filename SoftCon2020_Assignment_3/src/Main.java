@@ -7,7 +7,8 @@ public class Main {
     public static void main(String[] args){
         Grid player_grid = new Grid();
         player_grid.buildGrid();
-        Playflow.initializeGame(player_grid);
+        ArrayList<Ship> playerList = new ArrayList<>();
+        Playflow.initializeGame(player_grid, playerList);
         Grid ai_grid_hidden = new Grid();
         ai_grid_hidden.buildGrid();
         ArrayList<Ship> AIList = ai_grid_hidden.generateAIFleet();
@@ -35,7 +36,8 @@ public class Main {
                 scoreboard,
                 player,
                 enemy,
-                AIList);
+                AIList,
+                playerList);
     }
 
 }
