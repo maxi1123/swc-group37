@@ -45,13 +45,13 @@ public class Playflow {
 
     public static void playRound(Grid ai_grid_public, Grid ai_grid_hidden, Grid player_grid, Scoreboard scoreboard, Player player, Enemy enemy, ArrayList<Ship> AIlist) {
         if (enemy.getRemaining() == 0) {
-            System.out.println("You won");
+            System.out.println("Congratulations, you won!");
         }
         if (player.getRemaining() == 0) {
-            System.out.println("You lost");
+            System.out.println("Sorry, you lost!");
         } else {
             Scanner input = new Scanner(System.in);
-            System.out.print("\n" + "Enter the position you want to attack:");
+            System.out.print("\n" + "Enter the position you want to attack: ");
             String position = input.next();
             if (!Validator.playerAttackValidate(position, ai_grid_public)) {
                 System.out.println("Your Coordinates are invalid");
@@ -61,6 +61,7 @@ public class Playflow {
                     ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[O]";
                     ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[O]";
                     /* AI_attack(player_grid)-->also change boats remaining if necessary and Scoreboard!; */
+                    System.out.print("Miss");
                     System.out.println("\n" + "Your board is:");
                     player_grid.printGrid();
                     System.out.print("\n");
@@ -84,6 +85,10 @@ public class Playflow {
                                     enemy.updateRemaining();
                                     player.updateDestroyed();
                                     scoreboard.updateScoreboard(player.getDestroyed(), player.getRemaining());
+                                    System.out.print("You destroyed their " + ship.getName());
+                                }
+                                else{
+                                    System.out.print("You hit a boat!");
                                 }
                             }
                         }
