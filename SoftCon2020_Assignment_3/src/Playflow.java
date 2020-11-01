@@ -74,6 +74,8 @@ public class Playflow {
                     ai_grid_public.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
                     ai_grid_hidden.grid[position.charAt(1) - '0'][Transformer.transformCoord(position.charAt(0))] = "[X]";
                     for (int i=0;i<10;i++){
+                        AIlist.get(i).copyCoordlist();
+                        ArrayList<String> backup = AIlist.get(i).getBackup();
                         Ship ship = AIlist.get(i);
                         ArrayList<String> coordlist= ship.getCoordlist();
                         int size_coordlist = ship.getCoordlength();
@@ -85,6 +87,13 @@ public class Playflow {
                                     enemy.updateRemaining();
                                     player.updateDestroyed();
                                     scoreboard.updateScoreboard(player.getDestroyed(), player.getRemaining());
+                                    for(int x = backup.size()-1; x>=0; x--){
+                                        String coord = backup.get(x);
+                                        int coordone = Integer.parseInt(String.valueOf(coord.charAt(0)));
+                                        int coordtwo = Integer.parseInt(String.valueOf(coord.charAt(1)));
+                                        ai_grid_public.grid[coordone][coordtwo] = "[" + ship.getType() + "]";
+                                    }
+
                                     System.out.print("You destroyed their " + ship.getName());
                                 }
                                 else{

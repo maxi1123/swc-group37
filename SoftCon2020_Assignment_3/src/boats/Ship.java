@@ -39,4 +39,8 @@ public interface Ship {
     ArrayList<String> getCoordlist();
 
     void replaceCoordlist(ArrayList<String> coordlist);
+
+    void copyCoordlist();
+
+    ArrayList<String> getBackup();
 }

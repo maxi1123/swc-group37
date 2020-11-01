@@ -8,6 +8,7 @@ public class Battleship implements Ship{
     private final char type = 'B';
     private String fullname;
     private ArrayList<String> coordlist = new ArrayList<>();
+    private ArrayList<String> backup = new ArrayList<>();
 
     public Battleship(String shipname){
         fullname = shipname;
@@ -25,6 +26,14 @@ public class Battleship implements Ship{
     }
     public void replaceCoordlist(ArrayList<String> coordlist){
         this.coordlist = coordlist;
+    }
+    public void copyCoordlist(){
+        for (int i=0; i<coordlist.size(); i++){
+            backup.add(coordlist.get(i));
+        }
+    }
+    public ArrayList<String> getBackup(){
+        return backup;
     }
     @Override
     public int getSize(){

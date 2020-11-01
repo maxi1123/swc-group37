@@ -1,4 +1,5 @@
 package boats;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Carrier implements Ship{
@@ -8,6 +9,7 @@ public class Carrier implements Ship{
     private final String fullname = "Carrier";
     private final int allowed = 1;
     private ArrayList<String> coordlist = new ArrayList<>();
+    private ArrayList<String> backup = new ArrayList<>();
 
     public void updateCoordlist(int coordOne, int coordTwo){
         coordlist.add("" + coordOne + coordTwo);
@@ -20,6 +22,14 @@ public class Carrier implements Ship{
     }
     public void replaceCoordlist(ArrayList<String> coordlist){
         this.coordlist = coordlist;
+    }
+    public void copyCoordlist(){
+        for (int i=0; i<coordlist.size(); i++){
+            backup.add(coordlist.get(i));
+        }
+    }
+    public ArrayList<String> getBackup(){
+        return backup;
     }
     @Override
     public int getSize(){
