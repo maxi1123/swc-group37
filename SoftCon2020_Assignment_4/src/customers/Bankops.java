@@ -1,3 +1,5 @@
+package customers;
+
 public interface Bankops {
 
     void deposit(int amount);
