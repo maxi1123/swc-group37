@@ -1,6 +1,6 @@
 package customers;
 
-public interface Bankops {
+public interface BankOps {
 
     void deposit(int amount);
     int withdraw(int amount);

@@ -1,4 +1,5 @@
 package customers;
+import cards.Platinum_CC;
 
 public class Platinum extends Customer{
 
@@ -15,6 +16,7 @@ public class Platinum extends Customer{
         this.account_number = account_number;
         this.savings = savings;
         this.ID = ID;
+        this.creditcard = new Platinum_CC(this.name, this.surname, 123, 123, 123);
     }
 
 }

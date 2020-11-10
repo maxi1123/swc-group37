@@ -1,6 +1,7 @@
 package customers;
+import cards.*;
 
-public class Customer implements Bankops {
+public class Customer implements BankOps {
 
     // customers.Customer details to be inherited by subclasses
 
@@ -10,11 +11,14 @@ public class Customer implements Bankops {
     protected int account_number;
     protected int savings;
     protected int ID;
+    protected Creditcard creditcard;
 
+    @Override
     public void deposit(int amount){
         this.savings += amount;
     }
 
+    @Override
     public int withdraw(int amount){
         if(this.savings - amount >= 0){
             this.savings -= amount;
@@ -25,6 +29,7 @@ public class Customer implements Bankops {
         return amount;
     }
 
+    @Override
     public void transferPayment(int amount){
         if(this.savings - amount >= 0){
             this.savings -= amount;
@@ -34,8 +39,19 @@ public class Customer implements Bankops {
         }
     }
 
+    @Override
     public void transferCard(int amount){
+        if(amount > this.creditcard.getLimit()){
+            System.out.println("The specified amount exceeds your credit card limit.");
+        }
+    }
 
+    public int getID(){
+        return this.ID;
+    }
+
+    public void upgradeGold(){
+        this.creditcard = new Gold_CC(this.name, this.surname, 123, 123, 123);
     }
 
 }
