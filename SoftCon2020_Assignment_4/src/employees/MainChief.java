@@ -50,7 +50,7 @@ public class MainChief extends BankEmployee{
                     customer.downgradePlatinumToGold();
                 }
                 else{
-                    System.out.println("Upgrade failed. Customer doesn't have a Gold Creditcard.");
+                    System.out.println("Upgrade failed. Customer doesn't have a Platinum Creditcard.");
                 }
             }
         }
@@ -64,7 +64,7 @@ public class MainChief extends BankEmployee{
                     customer.downgradePlatinumToRegular();
                 }
                 else{
-                    System.out.println("Upgrade failed. Customer doesn't have a Gold Creditcard.");
+                    System.out.println("Upgrade failed. Customer doesn't have a Platinum Creditcard.");
                 }
             }
         }

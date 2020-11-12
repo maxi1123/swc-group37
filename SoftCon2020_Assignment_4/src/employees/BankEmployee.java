@@ -1,5 +1,5 @@
 package employees;
-import cards.Regular_CC;
+import cards.*;
 import customers.Customer;
 import java.util.ArrayList;
 
@@ -30,5 +30,9 @@ public class BankEmployee extends Employee implements EmpOps{
                 }
             }
         }
+    }
+
+    public void addCardToCustomer(Creditcard creditcard, Customer customer){
+        customer.setCreditcard(creditcard);
     }
 }

@@ -49,16 +49,53 @@ public class Customer implements BankOps {
     public int getID(){
         return this.ID;
     }
+
     public Creditcard getCreditcard(){
         return this.creditcard;
     }
 
-    public void upgradeGold(){
-        this.creditcard = new Gold_CC(this.name, this.surname, 123, 123, 123);
+    public void setCreditcard(Creditcard creditcard){
+        this.creditcard = creditcard;
     }
-    public void downgradeGold(){this.creditcard = new Regular_CC(this.name, this.surname, 123, 123, 123);}
-    public void upgradePlatinum(){this.creditcard = new Platinum_CC(this.name, this.surname, 123, 123, 123);}
-    public void downgradePlatinumToGold(){this.creditcard = new Gold_CC(this.name, this.surname, 123, 123, 123);}
-    public void downgradePlatinumToRegular(){this.creditcard = new Regular_CC(this.name, this.surname, 123, 123, 123);}
+
+    public void upgradeGold(){
+        this.creditcard = new Gold_CC(this.name,
+                this.surname,
+                this.creditcard.getSerial_number(),
+                this.creditcard.getSecurity_code(),
+                this.creditcard.getExpiration_date());
+    }
+
+    public void downgradeGold(){
+        this.creditcard = new Regular_CC(this.name,
+                this.surname,
+                this.creditcard.getSerial_number(),
+                this.creditcard.getSecurity_code(),
+                this.creditcard.getExpiration_date());
+    }
+
+    public void upgradePlatinum(){
+        this.creditcard = new Platinum_CC(this.name,
+                this.surname,
+                this.creditcard.getSerial_number(),
+                this.creditcard.getSecurity_code(),
+                this.creditcard.getExpiration_date());
+    }
+
+    public void downgradePlatinumToGold(){
+        this.creditcard = new Gold_CC(this.name,
+                this.surname,
+                this.creditcard.getSerial_number(),
+                this.creditcard.getSecurity_code(),
+                this.creditcard.getExpiration_date());
+    }
+
+    public void downgradePlatinumToRegular(){
+        this.creditcard = new Regular_CC(this.name,
+                this.surname,
+                this.creditcard.getSerial_number(),
+                this.creditcard.getSecurity_code(),
+                this.creditcard.getExpiration_date());
+    }
 }
 

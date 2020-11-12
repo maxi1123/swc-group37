@@ -11,5 +11,17 @@ public class Creditcard {
     public int getLimit(){
         return this.limit;
     }
+
+    public int getSerial_number(){
+        return this.serial_number;
+    }
+
+    public int getSecurity_code(){
+        return this.security_code;
+    }
+
+    public int getExpiration_date() {
+        return this.expiration_date;
+    }
 }
 
