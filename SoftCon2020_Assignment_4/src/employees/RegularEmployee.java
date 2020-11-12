@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class RegularEmployee extends BankEmployee{
 
     public RegularEmployee(String name, String surname, int ID, ArrayList<Customer> customerlist){
-        super(name, surname, ID);
+        super(name, surname, ID, customerlist);
 
         this.customerlist = customerlist;
     }

@@ -8,7 +8,7 @@ public class SectionChief extends BankEmployee{
     protected String city;
 
     public SectionChief(String name, String surname, int ID, ArrayList<Customer> customerlist, String city){
-        super(name, surname, ID);
+        super(name, surname, ID, customerlist);
 
         this.customerlist = customerlist;
         this.city = city;

@@ -8,10 +8,12 @@ public class BankEmployee extends Employee implements EmpOps{
 
     public BankEmployee(String name,
                         String surname,
-                        int ID){
+                        int ID,
+                        ArrayList<Customer> customerlist){
         this.name = name;
         this.surname = surname;
         this.ID = ID;
+        this.customerlist = customerlist;
     }
 
     protected ArrayList<Customer> customerlist;
