@@ -23,7 +23,7 @@ public class SectionChief extends BankEmployee{
                     customer.downgradeGold();
                 }
                 else{
-                    System.out.println("Upgrade failed. Customer doesn't have a Gold Creditcard.");
+                    System.out.println("Downgrade failed. Customer doesn't have a Gold Creditcard.");
                 }
             }
         }
