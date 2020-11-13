@@ -40,14 +40,21 @@ public class Customer implements BankOps {
     }
 
     @Override
-    public void transferCard(int amount){
+    public String transferCard(int amount){
         if(amount > this.creditcard.getLimit()){
-            System.out.println("The specified amount exceeds your credit card limit.");
+            return "The specified amount exceeds your credit card limit.";
+        }
+        else{
+            return "Transfer complete.";
         }
     }
 
     public int getID(){
         return this.ID;
+    }
+
+    public int getSavings(){
+        return this.savings;
     }
 
     public Creditcard getCreditcard(){

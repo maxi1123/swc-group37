@@ -14,6 +14,5 @@ public class Main {
 //        Regular1.addCardToCustomer(reg, max);
 //        Regular1.upgradeGold(666);
 //        MainChief chef = new MainChief("Max", "2", 123, customerlist1);
-//    }
     }
 }

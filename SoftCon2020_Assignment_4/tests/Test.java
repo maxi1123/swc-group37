@@ -1,37 +1,46 @@
-import cards.*;
-import customers.*;
-import employees.*;
-import org.junit.*;
-import java.util.*;
-import static org.junit.Assert.*;
+import cards.Gold_CC;
+import cards.Platinum_CC;
+import cards.Regular_CC;
+import customers.Customer;
+import customers.Gold;
+import customers.Platinum;
+import customers.Regular;
+import employees.MainChief;
+import employees.RegularEmployee;
+import employees.SectionChief;
 
-public  class Tests {
-    @Test //checks that the limit for gold cards gets set correctly
-    public void TestGoldLimit() {
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class Test {
+
+    @org.junit.jupiter.api.Test
+    void testGoldLimit() {
         Gold gold = new Gold("Max", "Mustermann", 32, 12345, 15000, 12345);
         Gold_CC goldcard = new Gold_CC("Max", "Mustermann", 32, 12345, 1500);
         gold.setCreditcard(goldcard);
         assertEquals(gold.getCreditcard().getLimit(), 5000);
     }
 
-    @Test //checks that the limit for platinum cards gets set correctly
-    public void TestPlatLimit() {
+    @org.junit.jupiter.api.Test
+    void testPlatLimit() {
         Platinum plat = new Platinum("Max", "Mustermann", 32, 12345, 15000, 12345);
         Platinum_CC platcard = new Platinum_CC("Max", "Mustermann", 32, 12345, 1500);
         plat.setCreditcard(platcard);
         assertEquals(plat.getCreditcard().getLimit(), 10000);
     }
 
-    @Test //checks that the limit for regular cards is set correcty
-    public void TestRegLimit() {
+    @org.junit.jupiter.api.Test
+    void testRegLimit() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
         assertEquals(reg.getCreditcard().getLimit(), 2000);
     }
 
-    @Test //checks whether the Main Chief can upgrade customers to gold
-    public void TestMainChiefGold() {
+    @org.junit.jupiter.api.Test
+    void testMainChiefGold() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
@@ -42,8 +51,8 @@ public  class Tests {
         assertEquals(reg.getCreditcard().getLimit(), 5000);
     }
 
-    @Test //checks if Main Chief can upgrade customer to platinum
-    public void TestMainChiefPlat() {
+    @org.junit.jupiter.api.Test
+    void testMainChiefPlat() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
@@ -55,8 +64,8 @@ public  class Tests {
         assertEquals(reg.getCreditcard().getLimit(), 10000);
     }
 
-    @Test //tests if platinum upgrade also works for Section Chiefs
-    public void TestSectionChiefUpgradePlat() {
+    @org.junit.jupiter.api.Test
+    void testSectionChiefUpgradePlat() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
@@ -68,8 +77,8 @@ public  class Tests {
         assertEquals(reg.getCreditcard().getLimit(), 10000);
     }
 
-    @Test //tests that Main Chief can downgrade customers from platinum to regular
-    public void TestMainChiefDonwgradePlatToReg() {
+    @org.junit.jupiter.api.Test
+    void testMainChiefDonwgradePlatToReg() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
@@ -81,8 +90,9 @@ public  class Tests {
         main.downgradePlatinumToRegular(12345);
         assertEquals(reg.getCreditcard().getLimit(), 2000);
     }
-    @Test //tests that main chief can not use "downgrade from platinum to gold" on regular customers
-    public void TestMainChiefDowngradeReg() {
+
+    @org.junit.jupiter.api.Test
+    void testMainChiefDowngradeReg() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
@@ -92,42 +102,47 @@ public  class Tests {
         main.downgradePlatinumToGold(12345);
         assertEquals(reg.getCreditcard().getLimit(), 2000);
     }
-    @Test //tests if normal bank employee can upgrade to gold
-    public void TestBankEmployeeUpgradeGold() {
+
+    @org.junit.jupiter.api.Test
+    void testRegularEmployeeUpgradeGold() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
         ArrayList<Customer> clist = new ArrayList<>();
         clist.add(reg);
-        BankEmployee bankpleb = new BankEmployee("Whack", "Man", 7, clist);
+        RegularEmployee bankpleb = new RegularEmployee("Whack", "Man", 7, clist);
         bankpleb.upgradeGold(12345);
         assertEquals(reg.getCreditcard().getLimit(), 5000);
     }
-    @Test //tests that normal bank employees cant wrongly "upgrade" platinum to gold
-    public void TestBankEmployeeWrongUpgrade() {
+
+    @org.junit.jupiter.api.Test
+    void testRegularEmployeeWrongUpgrade() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Platinum_CC regcard = new Platinum_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
         ArrayList<Customer> clist = new ArrayList<>();
         clist.add(reg);
-        BankEmployee bankpleb = new BankEmployee("Whack", "Man", 7, clist);
+        RegularEmployee bankpleb = new RegularEmployee("Whack", "Man", 7, clist);
         bankpleb.upgradeGold(12345);
         assertEquals(reg.getCreditcard().getLimit(), 10000);
     }
-    @Test //tests transfer limit
-    public void TransferLimit() {
+
+    @org.junit.jupiter.api.Test
+    void transferLimit() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         reg.transferPayment(16000);
         assertEquals(reg.withdraw(15000),15000);
     }
-    @Test //tests overdrafting
-    public void WithdrawLimit() {
+
+    @org.junit.jupiter.api.Test
+    void withdrawLimit() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         reg.withdraw(16000);
         assertEquals(reg.withdraw(15000),15000);
     }
-    @Test //tests that transfers dont use CC limit
-    public void TransferNotCCLimit() {
+
+    @org.junit.jupiter.api.Test
+    void transferNotCCLimit() {
         Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
         Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
         reg.setCreditcard(regcard);
@@ -135,4 +150,52 @@ public  class Tests {
         assertEquals(reg.withdraw(1000),1000);
     }
 
+    @org.junit.jupiter.api.Test
+    void depositTest(){
+        Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
+        reg.deposit(5000);
+        assertEquals(reg.getSavings(), 20000 );
+    }
+
+    @org.junit.jupiter.api.Test
+    void testDowngradeGoldToRegular(){
+        Gold gold = new Gold("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Gold_CC goldcard = new Gold_CC("Max", "Mustermann", 32, 12345, 1500);
+        gold.setCreditcard(goldcard);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(gold);
+        SectionChief section = new SectionChief("Whack", "Man", 1, clist, "Ouagadougou");
+        section.downgradeGold(12345);
+        assertEquals(gold.getCreditcard().getLimit(), 2000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testDowngradePlatinumToGold(){
+        Platinum plat = new Platinum("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Platinum_CC platcard = new Platinum_CC("Max", "Mustermann", 32, 12345, 1500);
+        plat.setCreditcard(platcard);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(plat);
+        MainChief chief = new MainChief("Whack", "Man", 1, clist);
+        chief.downgradePlatinumToGold(12345);
+        assertEquals(plat.getCreditcard().getLimit(), 5000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testTransferCardNotPossible(){
+        Platinum plat = new Platinum("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Platinum_CC platcard = new Platinum_CC("Max", "Mustermann", 32, 12345, 1500);
+        String check = "The specified amount exceeds your credit card limit.";
+        plat.setCreditcard(platcard);
+        assertEquals(plat.transferCard(12000), check);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testTransferCardPossible(){
+        Platinum plat = new Platinum("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Platinum_CC platcard = new Platinum_CC("Max", "Mustermann", 32, 12345, 1500);
+        String check = "Transfer complete.";
+        plat.setCreditcard(platcard);
+        assertEquals(plat.transferCard(9000), check);
+    }
 }
