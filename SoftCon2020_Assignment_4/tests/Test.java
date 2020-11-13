@@ -5,9 +5,8 @@ import customers.Customer;
 import customers.Gold;
 import customers.Platinum;
 import customers.Regular;
-import employees.MainChief;
-import employees.RegularEmployee;
-import employees.SectionChief;
+import employees.*;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 
@@ -197,5 +196,101 @@ class Test {
         String check = "Transfer complete.";
         plat.setCreditcard(platcard);
         assertEquals(plat.transferCard(9000), check);
+    }
+
+    @org.junit.jupiter.api.Test
+    void fixBackEndTest(){
+        BackendTech backend = new BackendTech("max", "musti", 123);
+        assertEquals(backend.fixBackend(123), "Fixed!");
+    }
+
+    @org.junit.jupiter.api.Test
+    void employeeAddCardToCustomerTest(){
+        Gold gold = new Gold("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Gold_CC goldcard = new Gold_CC("Max", "Mustermann", 32, 12345, 1500);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(gold);
+        RegularEmployee bankpleb = new RegularEmployee("Whack", "Man", 7, clist);
+        bankpleb.addCardToCustomer(goldcard, gold);
+        assertEquals(gold.getCreditcard().getLimit(), 5000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testMainChiefDowngradeGold() {
+        Gold gold = new Gold("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Gold_CC goldcard = new Gold_CC("Max", "Mustermann", 32, 12345, 1500);
+        gold.setCreditcard(goldcard);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(gold);
+        MainChief main = new MainChief("Boss", "Man", 1, clist);
+        main.downgradeGold(12345);
+        assertEquals(gold.getCreditcard().getLimit(), 2000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testMainChiefDowngradeGoldNotPossible() {
+        Gold gold = new Gold("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Platinum_CC goldcard = new Platinum_CC("Max", "Mustermann", 32, 12345, 1500);
+        gold.setCreditcard(goldcard);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(gold);
+        MainChief main = new MainChief("Boss", "Man", 1, clist);
+        main.downgradeGold(12345);
+        assertEquals(gold.getCreditcard().getLimit(), 10000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testMainChiefUpgradePlatinumNotPossible() {
+        Gold gold = new Gold("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Platinum_CC goldcard = new Platinum_CC("Max", "Mustermann", 32, 12345, 1500);
+        gold.setCreditcard(goldcard);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(gold);
+        MainChief main = new MainChief("Boss", "Man", 1, clist);
+        main.upgradePlatinum(12345);
+        assertEquals(gold.getCreditcard().getLimit(), 10000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testMainChiefDowngradePlatinumToRegularNotPossible() {
+        Gold gold = new Gold("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Regular_CC goldcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
+        gold.setCreditcard(goldcard);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(gold);
+        MainChief main = new MainChief("Boss", "Man", 1, clist);
+        main.downgradePlatinumToRegular(12345);
+        assertEquals(gold.getCreditcard().getLimit(), 2000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testSectionChiefDowngradeGoldNotPossible() {
+        Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
+        reg.setCreditcard(regcard);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(reg);
+        SectionChief section = new SectionChief("Whack", "Man", 1, clist, "Ouagadougou");
+        section.downgradeGold(12345);
+        assertEquals(reg.getCreditcard().getLimit(), 2000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testSectionChiefUpgradePlatinumNotPossible() {
+        Regular reg = new Regular("Max", "Mustermann", 32, 12345, 15000, 12345);
+        Regular_CC regcard = new Regular_CC("Max", "Mustermann", 32, 12345, 1500);
+        reg.setCreditcard(regcard);
+        ArrayList<Customer> clist = new ArrayList<>();
+        clist.add(reg);
+        SectionChief section = new SectionChief("Whack", "Man", 1, clist, "Ouagadougou");
+        section.upgradePlatinum(12345);
+        assertEquals(reg.getCreditcard().getLimit(), 2000);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testWebTechFixWebsite(){
+        WebTech webtech = new WebTech("max", "musti", 123);
+        String check = "Reparations complete.";
+        assertEquals(webtech.fixWebsite(), check);
     }
 }

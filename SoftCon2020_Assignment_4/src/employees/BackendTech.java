@@ -10,7 +10,8 @@ public class BackendTech extends Employee{
         this.ID = ID;
     }
 
-    public void fixBackend(int ID){
+    public String fixBackend(int ID){
         System.out.println("Fixed!");
+        return "Fixed!";
     }
 }

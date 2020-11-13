@@ -10,7 +10,7 @@ public class WebTech extends Employee{
         this.ID = ID;
     }
 
-    public void fixWebsite(){
+    public String fixWebsite(){
         try{
             Thread.sleep(30000);
 
@@ -19,5 +19,6 @@ public class WebTech extends Employee{
             Thread.currentThread().interrupt();
         }
         System.out.println("Reparations complete.");
+        return "Reparations complete.";
     }
 }
