@@ -29,7 +29,7 @@ sub classes for each category of card with their own limits. Cards can only be a
 to a customer through a "BankEmployee" operation.
 
 For the UML's, please refer to the three .png files within
-the "SoftCon2020_Assignment_4" folder.
+the "SoftCon2020_Assignment_4" folder. The dotted arrows stand for "implements".
 
 Task 2
 ---------
