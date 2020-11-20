@@ -5,7 +5,7 @@ Singleton:
 We implemented two Singleton objects in our version of Battleships.
 When running the main method, the game gets set up. Apart from the different grids being created, we need a
 (single) player object as well as a (single) enemy object. These get created by making use of the Singleton
-design pattern. Check lines 23 & 24 in Main.java for further reference. 
+design pattern. Check lines 23 & 24 in AirportShuttle.Main.java for further reference. 
 Theoretically this design pattern could've also been used for ensuring creation of a single scoreboard object.
 However, we didn't want to overuse this pattern, hence we decided to not make use of another Singleton.
 
