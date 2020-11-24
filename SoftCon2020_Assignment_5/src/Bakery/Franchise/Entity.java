@@ -1,4 +1,4 @@
-package Bakery;
+package Bakery.Franchise;
 
 public abstract class Entity {
     String name;

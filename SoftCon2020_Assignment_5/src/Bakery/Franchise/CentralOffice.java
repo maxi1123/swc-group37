@@ -1,4 +1,4 @@
-package Bakery;
+package Bakery.Franchise;
 import java.util.*;
 
 public class CentralOffice extends Entity{

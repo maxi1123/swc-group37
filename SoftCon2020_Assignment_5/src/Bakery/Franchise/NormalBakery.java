@@ -1,4 +1,4 @@
-package Bakery;
+package Bakery.Franchise;
 
 public class NormalBakery extends Bakery{
     public NormalBakery(String name, String address){
