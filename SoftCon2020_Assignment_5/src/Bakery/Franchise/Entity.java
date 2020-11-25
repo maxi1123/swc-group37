@@ -1,6 +1,7 @@
 package Bakery.Franchise;
 
-public abstract class Entity {
+public abstract class Entity //Entity is the component of every office and bakery in this composite
+{
     String name;
 
     public void add(Entity entity){

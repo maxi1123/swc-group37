@@ -1,8 +1,8 @@
 package AirportShuttle.Cars;
 
 import AirportShuttle.GasolineTypes.Diesel;
-import AirportShuttle.Pricetypes.Cheapest;
 import AirportShuttle.Luggage_Size.NoLimit;
+import AirportShuttle.Pricetypes.Cheapest;
 import AirportShuttle.Speedtypes.slow;
 
 public class Bus extends Car {

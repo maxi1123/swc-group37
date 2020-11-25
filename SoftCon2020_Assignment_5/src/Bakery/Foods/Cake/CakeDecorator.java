@@ -1,6 +1,7 @@
 package Bakery.Foods.Cake;
 
-public class CakeDecorator implements Cake{
+public class CakeDecorator implements Cake //Decorator superclass from which each ingredient extends
+{
 
     protected Cake TempCake;
 

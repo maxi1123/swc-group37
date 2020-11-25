@@ -1,11 +1,12 @@
 package Bakery.Franchise;
 import java.util.*;
 
-public class CentralOffice extends Entity{
+public class CentralOffice extends Entity //highest level of the composite tree
+{
     private ArrayList<Entity> CityOfficeList = new ArrayList<Entity>();
 
     public void printAllOffices(){
-
+        print();
     }
     @Override
     public void add(Entity entity) {

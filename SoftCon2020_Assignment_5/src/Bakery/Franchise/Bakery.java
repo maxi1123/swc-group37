@@ -1,6 +1,7 @@
 package Bakery.Franchise;
 
-public abstract class Bakery extends Entity {
+public abstract class Bakery extends Entity //basic structure for the bakeries which will be the leaves of this composite
+{
     String name;
     String address;
 

@@ -1,6 +1,7 @@
 package Bakery.Foods.Sandwich;
 
-public class SandwichDecorator implements Sandwich{
+public class SandwichDecorator implements Sandwich //decorator class for sandwiches, from which each ingredient extends
+{
     protected Sandwich TempSandwich;
 
     public SandwichDecorator(Sandwich sandwich){

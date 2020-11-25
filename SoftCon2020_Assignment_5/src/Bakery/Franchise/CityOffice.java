@@ -2,7 +2,8 @@ package Bakery.Franchise;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class CityOffice extends Entity {
+public class CityOffice extends Entity //entites on the second level of the composite tree
+{
     public CityOffice(String city){
         this.name = "city office of " + city;
     }

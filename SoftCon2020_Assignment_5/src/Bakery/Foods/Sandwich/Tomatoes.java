@@ -1,6 +1,7 @@
 package Bakery.Foods.Sandwich;
 
-public class Tomatoes extends SandwichDecorator{
+public class Tomatoes extends SandwichDecorator //Decorator ingredient
+{
     public Tomatoes(Sandwich sandwich) {
         super(sandwich);
     }
