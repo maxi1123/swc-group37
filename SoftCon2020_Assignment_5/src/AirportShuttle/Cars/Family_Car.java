@@ -12,6 +12,7 @@ public class Family_Car extends Car {
         luggagetype = new big();
         speed = new normal();
         gasolinetype = new Gasoline();
+        name = "FamilyCar";
     }
 
 }

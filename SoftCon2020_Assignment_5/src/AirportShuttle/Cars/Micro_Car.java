@@ -12,6 +12,7 @@ public class Micro_Car extends Car {
         luggagetype = new small();
         speed = new normal();
         gasolinetype = new Electric();
+        name = "Micro Car";
     }
 
 }

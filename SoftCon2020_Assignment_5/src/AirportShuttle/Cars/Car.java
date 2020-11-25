@@ -10,12 +10,13 @@ public class Car {
     protected Luggagetypes luggagetype;
     protected Different_Speeds speed;
     protected DifferentGasolinetypes gasolinetype;
+    protected String name;
 
 
     public int getpricetype(){
         return pricetype.price();
     }
-    public int getluggagesize(){
+    public String getluggagesize(){
         return luggagetype.luggage_size();
     }
     public String getspeed(){
@@ -24,6 +25,7 @@ public class Car {
     public String getGasolinetype(){
         return gasolinetype.Gasolinetype();
     }
+    public String getName(){return name;}
 
 
     public void setPricetype(Costs newPriceType){

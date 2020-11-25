@@ -1,7 +1,7 @@
 package AirportShuttle.Luggage_Size;
 
 public class big implements Luggagetypes{
-    public int luggage_size(){
-        return 4;
+    public String luggage_size(){
+        return ("2 small Bags and 2 large Bags");
     }
 }

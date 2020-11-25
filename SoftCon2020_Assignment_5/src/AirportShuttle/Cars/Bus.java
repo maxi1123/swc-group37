@@ -12,5 +12,6 @@ public class Bus extends Car {
         luggagetype = new NoLimit();
         speed = new slow();
         gasolinetype = new Diesel();
+        name= "Bus";
     }
 }

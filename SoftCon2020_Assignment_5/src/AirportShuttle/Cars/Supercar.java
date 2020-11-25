@@ -12,5 +12,6 @@ public class Supercar extends Car{
         luggagetype = new medium();
         speed = new fast();
         gasolinetype = new Gasoline();
+        name = "Supercar";
     }
 }
