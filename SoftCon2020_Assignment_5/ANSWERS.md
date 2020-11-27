@@ -10,3 +10,9 @@ The decorator pattern was applied twice: once for the sandwiches and once for th
 decorator classes serve as a super class for each ingredient. This allows us to customize
 every single food item instead of making a specific class for each type of cake/sandwich. This
 can also be easily extended for further ingredients by inheritance from the respective dcorator classes.
+
+#Exercise 2
+--------
+For the second exercise, the strategy pattern was implemented. The main reason is easy expandability. An object
+should be easily expandable; e.g. all cars can have different prices, speeds or other attributes. Therefore
+new classes are not needed because attributes can directly be changed.
